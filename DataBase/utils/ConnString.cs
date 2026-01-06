@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DataBase
 {
-    public class Class1
+    public static class ConnString
     {
+        public static string connectionString = "server= localhost;user=root;database=armazem;password=abc123;";
     }
 }
