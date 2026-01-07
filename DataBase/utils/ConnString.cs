@@ -8,6 +8,6 @@ namespace DataBase
 {
     public static class ConnString
     {
-        public static string connectionString = "server= localhost;user=root;database=armazem;password=abc123;";
+        public static string connectionChain = "server= localhost;user=root;database=armazem;password=abc123;";
     }
 }
