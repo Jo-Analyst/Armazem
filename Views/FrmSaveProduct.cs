@@ -33,9 +33,15 @@ namespace Interface
         {
             try
             {
-                new Product {Id = idProduct, Name = txtName.Text.Trim() }.Save();
+                Product product = new Product();
+                product.Id = idProduct;
+                product.Name = txtName.Text.Trim();
+                product.Save();
                 isSaved = true;
-                Close();
+                this.Visible = false;
+
+                if (idProduct == 0)
+                    new FrmProductStock(product.Id, txtName.Text.Trim()).ShowDialog();
             }
             catch (Exception)
             {

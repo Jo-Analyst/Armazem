@@ -1,19 +1,26 @@
-﻿using Interface.Properties;
-using DataBase;
+﻿using DataBase;
+using Interface.Properties;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Interface
 {
-    public partial class FrmProducts : Form
+    public partial class FrmProductStock : Form
     {
+        int page = 1, pageMaximum = 1, idProduct;
 
-        int page = 1, pageMaximum = 1;
-
-        public FrmProducts()
+        public FrmProductStock(int idProduct, string nameProduct)
         {
             InitializeComponent();
+            lblNameProduct.Text = nameProduct;
+            this.idProduct = idProduct;
         }
 
 
@@ -101,17 +108,17 @@ namespace Interface
 
         private void FrmProducts_Load(object sender, EventArgs e)
         {
-            cbPage.Text = "1";
-            cbRows.Text = "10";
-            LoadEvents();
-            this.cbRows.SelectedIndexChanged += cbRows_SelectedIndexChanged;
-            this.cbPage.SelectedIndexChanged += new System.EventHandler(this.cbPage_SelectedIndexChanged);
+            //cbPage.Text = "1";
+            //cbRows.Text = "10";
+            //LoadEvents();
+            //this.cbRows.SelectedIndexChanged += cbRows_SelectedIndexChanged;
+            //this.cbPage.SelectedIndexChanged += new System.EventHandler(this.cbPage_SelectedIndexChanged);
         }
 
         private void CheckNumberOfPages(int numberRows)
         {
             PageData.quantityRowsSelected = numberRows;
-            pageMaximum = string.IsNullOrWhiteSpace(txtName.Text) ? PageData.SetPageQuantityProducts() : PageData.SetPageQuantityProductsByName(txtName.Text);
+            pageMaximum = string.IsNullOrWhiteSpace(lblNameProduct.Text) ? PageData.SetPageQuantityProducts() : PageData.SetPageQuantityProductsByName(lblNameProduct.Text);
 
             if (pageMaximum > 1)
                 EnabledBtnArrowRight();
@@ -127,8 +134,8 @@ namespace Interface
                 int quantRows = int.Parse(cbRows.Text);
                 int pageSelected = (page - 1) * quantRows;
 
-                DataTable dtProducts = string.IsNullOrWhiteSpace(txtName.Text) ? Product.FindAll(pageSelected, quantRows)
-                    : Product.FindByName(txtName.Text.Trim(), pageSelected, quantRows);
+                DataTable dtProducts = string.IsNullOrWhiteSpace(lblNameProduct.Text) ? Product.FindAll(pageSelected, quantRows)
+                    : Product.FindByName(lblNameProduct.Text.Trim(), pageSelected, quantRows);
 
                 foreach (DataRow user in dtProducts.Rows)
                 {
@@ -140,18 +147,11 @@ namespace Interface
                     dgvProduct.Rows[index].Cells["ColName"].Value = user["name"].ToString();
                     dgvProduct.Rows[index].Height = 45;
                 }
-
-                UpdateProductDescription();
             }
             catch (Exception)
             {
                 MessageBox.Show("Houve um erro no sistema. Tente novamente", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void UpdateProductDescription()
-        {
-            lblDescriptionRow.Text = $"Exibindo {dgvProduct.Rows.Count} de {PageData.quantity} produto(s) cadastrado(s)";
         }
 
         private void UpdateComboBoxItems()
@@ -178,7 +178,6 @@ namespace Interface
             CheckNumberOfPages(int.Parse(cbRows.Text));
             UpdateComboBoxItems();
             LoadProducts();
-            UpdateProductDescription();
         }
 
         private void cbRows_SelectedIndexChanged(object sender, EventArgs e)

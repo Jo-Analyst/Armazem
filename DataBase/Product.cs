@@ -20,12 +20,15 @@ namespace DataBase
                 using (MySqlConnection conn = new MySqlConnection(ConnString.connectionChain))
                 {
                     conn.Open();
-                    string sql =  Id == 0 ? "INSERT INTO products (name) VALUES (@name)" : "UPDATE products SET name = @name WHERE id = @id";
+                    string sql =  Id == 0 ? "INSERT INTO products (name) VALUES (@name); SELECT LAST_INSERT_ID()" : "UPDATE products SET name = @name WHERE id = @id";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@name", Name);
                     cmd.Parameters.AddWithValue("@id", Id);
                     cmd.CommandText = sql;
-                    cmd.ExecuteNonQuery();
+                    if(Id == 0)
+                        Id = Convert.ToInt32(cmd.ExecuteScalar());
+                    else
+                        cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
@@ -83,7 +86,7 @@ namespace DataBase
                 using (MySqlConnection conn = new MySqlConnection(ConnString.connectionChain))
                 {
                     conn.Open();
-                    string sql = "DELETE  FROM products WHERE id = @id";
+                    string sql = "DELETE FROM products WHERE id = @id";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@id", id);
                     cmd.CommandText = sql;

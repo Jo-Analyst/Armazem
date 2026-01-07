@@ -131,6 +131,12 @@
     <Compile Include="Views\Product\FrmProducts.Designer.cs">
       <DependentUpon>FrmProducts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Product\FrmProductStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Product\FrmProductStock.Designer.cs">
+      <DependentUpon>FrmProductStock.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FrmControlArmazen.resx">
       <DependentUpon>FrmControlArmazen.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,6 +158,9 @@
     </Compile>
     <EmbeddedResource Include="Views\Product\FrmProducts.resx">
       <DependentUpon>FrmProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Product\FrmProductStock.resx">
+      <DependentUpon>FrmProductStock.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
