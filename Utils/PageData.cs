@@ -16,30 +16,17 @@ namespace Interface
         }
 
 
-        //static public int SetPageQuantityServices(int userId = 0)
-        //{
-        //    quantity = Service.CountQuantityServicesByUserId(userId);
-        //    return CalculateNumberOfPage();
-        //}
+        static public int SetPageQuantityStorages(int productId)
+        {
+            quantity = Storage.CountQuantityStorages(productId);
+            return CalculateNumberOfPage();
+        }
 
-        //static public int SetPageQuantityServicesByDate(string year)
-        //{
-        //    quantity = Service.CountQuantityServicesByYear(year);
-        //    return CalculateNumberOfPage();
-        //}
-
-      
         static public int SetPageQuantityProductsByName(string name)
         {
             quantity = Product.CountQuantityProductsByName(name);
             return CalculateNumberOfPage();
         }
-
-        ////static public int SetPageQuantityServices(int personId)
-        ////{
-        ////    quantity = Service.CountQuantityServices(personId);
-        ////    return CalculacalculateNumberOfPage();
-        ////}
 
         static private int CalculateNumberOfPage()
         {

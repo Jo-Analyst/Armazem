@@ -1,12 +1,5 @@
 ﻿using DataBase;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Interface
@@ -21,7 +14,7 @@ namespace Interface
         {
             InitializeComponent();
         }
-        
+
         public FrmSaveProduct(int id, string name)
         {
             InitializeComponent();
@@ -41,11 +34,19 @@ namespace Interface
                 this.Visible = false;
 
                 if (idProduct == 0)
-                    new FrmProductStock(product.Id, txtName.Text.Trim()).ShowDialog();
+                    new FrmStorage(product.Id, txtName.Text.Trim()).ShowDialog();
             }
             catch (Exception)
             {
                 MessageBox.Show("Houve um erro no sistema. Tente novamente", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void FrmSaveProduct_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btnSalvar.PerformClick();
             }
         }
     }

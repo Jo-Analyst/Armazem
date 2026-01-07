@@ -1,5 +1,5 @@
-﻿using Interface.Properties;
-using DataBase;
+﻿using DataBase;
+using Interface.Properties;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -130,14 +130,14 @@ namespace Interface
                 DataTable dtProducts = string.IsNullOrWhiteSpace(txtName.Text) ? Product.FindAll(pageSelected, quantRows)
                     : Product.FindByName(txtName.Text.Trim(), pageSelected, quantRows);
 
-                foreach (DataRow user in dtProducts.Rows)
+                foreach (DataRow storage in dtProducts.Rows)
                 {
                     int index = dgvProduct.Rows.Add();
                     dgvProduct.Rows[index].Cells["ColADD"].Value = Resources.add_post;
                     dgvProduct.Rows[index].Cells["ColEdit"].Value = Resources.edit;
                     dgvProduct.Rows[index].Cells["ColDelete"].Value = Resources.delete;
-                    dgvProduct.Rows[index].Cells["ColId"].Value = user["id"].ToString();
-                    dgvProduct.Rows[index].Cells["ColName"].Value = user["name"].ToString();
+                    dgvProduct.Rows[index].Cells["ColId"].Value = storage["id"].ToString();
+                    dgvProduct.Rows[index].Cells["ColName"].Value = storage["name"].ToString();
                     dgvProduct.Rows[index].Height = 45;
                 }
 
@@ -224,7 +224,6 @@ namespace Interface
 
         private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
             bool isConfirmed = false;
 
             if (e.RowIndex == -1) return;
@@ -234,7 +233,7 @@ namespace Interface
 
             if (dgvProduct.CurrentCell.ColumnIndex == 0)
             {
-                //new FrmCustomerService(id, name).ShowDialog();
+                new FrmStorage(id, name).ShowDialog();
             }
             else if (dgvProduct.CurrentCell.ColumnIndex == 1)
             {
@@ -246,7 +245,7 @@ namespace Interface
             }
             else if (dgvProduct.CurrentCell.ColumnIndex == 2)
             {
-                DialogResult dr = MessageBox.Show($"Deseja mesmo excluir o(a) usuário(a) {name} do sistema?", "Central Serviços", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                DialogResult dr = MessageBox.Show($"Deseja mesmo excluir o produto {name} do sistema?", "Controle do almoxarifado", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
                 if (dr == DialogResult.Yes)
                 {

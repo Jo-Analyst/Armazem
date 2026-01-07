@@ -1,10 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataBase
 {
@@ -20,12 +16,12 @@ namespace DataBase
                 using (MySqlConnection conn = new MySqlConnection(ConnString.connectionChain))
                 {
                     conn.Open();
-                    string sql =  Id == 0 ? "INSERT INTO products (name) VALUES (@name); SELECT LAST_INSERT_ID()" : "UPDATE products SET name = @name WHERE id = @id";
+                    string sql = Id == 0 ? "INSERT INTO products (name) VALUES (@name); SELECT LAST_INSERT_ID()" : "UPDATE products SET name = @name WHERE id = @id";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@name", Name);
                     cmd.Parameters.AddWithValue("@id", Id);
                     cmd.CommandText = sql;
-                    if(Id == 0)
+                    if (Id == 0)
                         Id = Convert.ToInt32(cmd.ExecuteScalar());
                     else
                         cmd.ExecuteNonQuery();
