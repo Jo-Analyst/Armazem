@@ -39,6 +39,8 @@
             this.cbPage = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnArrowRight = new System.Windows.Forms.Button();
+            this.btnArrowLeft = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.lblNameProduct = new System.Windows.Forms.Label();
@@ -48,8 +50,6 @@
             this.ndQuantityStock = new System.Windows.Forms.NumericUpDown();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnArrowRight = new System.Windows.Forms.Button();
-            this.btnArrowLeft = new System.Windows.Forms.Button();
             this.ColRegisterExit = new System.Windows.Forms.DataGridViewImageColumn();
             this.ColEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.ColDelete = new System.Windows.Forms.DataGridViewImageColumn();
@@ -117,7 +117,7 @@
             this.dgvProduct.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProduct.RowHeadersVisible = false;
             this.dgvProduct.RowHeadersWidth = 51;
-            this.dgvProduct.Size = new System.Drawing.Size(714, 229);
+            this.dgvProduct.Size = new System.Drawing.Size(835, 229);
             this.dgvProduct.TabIndex = 0;
             this.dgvProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellClick);
             this.dgvProduct.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellMouseEnter);
@@ -135,7 +135,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 398);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(762, 49);
+            this.panel1.Size = new System.Drawing.Size(883, 49);
             this.panel1.TabIndex = 3;
             // 
             // cbRows
@@ -168,7 +168,7 @@
             this.cbPage.FormattingEnabled = true;
             this.cbPage.IntegralHeight = false;
             this.cbPage.ItemHeight = 18;
-            this.cbPage.Location = new System.Drawing.Point(539, 11);
+            this.cbPage.Location = new System.Drawing.Point(660, 11);
             this.cbPage.Margin = new System.Windows.Forms.Padding(19, 17, 19, 17);
             this.cbPage.Name = "cbPage";
             this.cbPage.Size = new System.Drawing.Size(97, 26);
@@ -179,7 +179,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(470, 14);
+            this.label2.Location = new System.Drawing.Point(591, 14);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 18);
@@ -196,6 +196,42 @@
             this.label1.Size = new System.Drawing.Size(48, 18);
             this.label1.TabIndex = 11;
             this.label1.Text = "Exibir";
+            // 
+            // btnArrowRight
+            // 
+            this.btnArrowRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnArrowRight.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnArrowRight.Enabled = false;
+            this.btnArrowRight.FlatAppearance.BorderSize = 0;
+            this.btnArrowRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnArrowRight.Image = global::Interface.Properties.Resources.right_arrow_grey;
+            this.btnArrowRight.Location = new System.Drawing.Point(826, 6);
+            this.btnArrowRight.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnArrowRight.Name = "btnArrowRight";
+            this.btnArrowRight.Size = new System.Drawing.Size(38, 35);
+            this.btnArrowRight.TabIndex = 10;
+            this.btnArrowRight.TabStop = false;
+            this.toolTip.SetToolTip(this.btnArrowRight, "Avançar para a próxima lista - CTRL+Seta Direita");
+            this.btnArrowRight.UseVisualStyleBackColor = true;
+            this.btnArrowRight.Click += new System.EventHandler(this.btnArrowRight_Click);
+            // 
+            // btnArrowLeft
+            // 
+            this.btnArrowLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnArrowLeft.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnArrowLeft.Enabled = false;
+            this.btnArrowLeft.FlatAppearance.BorderSize = 0;
+            this.btnArrowLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnArrowLeft.Image = global::Interface.Properties.Resources.left_arrow_grey;
+            this.btnArrowLeft.Location = new System.Drawing.Point(780, 6);
+            this.btnArrowLeft.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnArrowLeft.Name = "btnArrowLeft";
+            this.btnArrowLeft.Size = new System.Drawing.Size(38, 35);
+            this.btnArrowLeft.TabIndex = 9;
+            this.btnArrowLeft.TabStop = false;
+            this.toolTip.SetToolTip(this.btnArrowLeft, "Voltar para a lista anterior - CTRL+Seta Esquerda");
+            this.btnArrowLeft.UseVisualStyleBackColor = true;
+            this.btnArrowLeft.Click += new System.EventHandler(this.btnArrowLeft_Click);
             // 
             // label3
             // 
@@ -214,7 +250,7 @@
             this.lblNameProduct.Location = new System.Drawing.Point(28, 48);
             this.lblNameProduct.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameProduct.Name = "lblNameProduct";
-            this.lblNameProduct.Size = new System.Drawing.Size(526, 24);
+            this.lblNameProduct.Size = new System.Drawing.Size(331, 24);
             this.lblNameProduct.TabIndex = 0;
             this.lblNameProduct.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -298,42 +334,6 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // btnArrowRight
-            // 
-            this.btnArrowRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnArrowRight.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnArrowRight.Enabled = false;
-            this.btnArrowRight.FlatAppearance.BorderSize = 0;
-            this.btnArrowRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArrowRight.Image = global::Interface.Properties.Resources.right_arrow_grey;
-            this.btnArrowRight.Location = new System.Drawing.Point(705, 6);
-            this.btnArrowRight.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnArrowRight.Name = "btnArrowRight";
-            this.btnArrowRight.Size = new System.Drawing.Size(38, 35);
-            this.btnArrowRight.TabIndex = 10;
-            this.btnArrowRight.TabStop = false;
-            this.toolTip.SetToolTip(this.btnArrowRight, "Avançar para a próxima lista - CTRL+Seta Direita");
-            this.btnArrowRight.UseVisualStyleBackColor = true;
-            this.btnArrowRight.Click += new System.EventHandler(this.btnArrowRight_Click);
-            // 
-            // btnArrowLeft
-            // 
-            this.btnArrowLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnArrowLeft.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnArrowLeft.Enabled = false;
-            this.btnArrowLeft.FlatAppearance.BorderSize = 0;
-            this.btnArrowLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArrowLeft.Image = global::Interface.Properties.Resources.left_arrow_grey;
-            this.btnArrowLeft.Location = new System.Drawing.Point(659, 6);
-            this.btnArrowLeft.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnArrowLeft.Name = "btnArrowLeft";
-            this.btnArrowLeft.Size = new System.Drawing.Size(38, 35);
-            this.btnArrowLeft.TabIndex = 9;
-            this.btnArrowLeft.TabStop = false;
-            this.toolTip.SetToolTip(this.btnArrowLeft, "Voltar para a lista anterior - CTRL+Seta Esquerda");
-            this.btnArrowLeft.UseVisualStyleBackColor = true;
-            this.btnArrowLeft.Click += new System.EventHandler(this.btnArrowLeft_Click);
-            // 
             // ColRegisterExit
             // 
             this.ColRegisterExit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -377,9 +377,11 @@
             // 
             // ColQuantityStock
             // 
-            this.ColQuantityStock.HeaderText = "Quantidade";
+            this.ColQuantityStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColQuantityStock.HeaderText = "Quant. Inicial";
             this.ColQuantityStock.Name = "ColQuantityStock";
             this.ColQuantityStock.ReadOnly = true;
+            this.ColQuantityStock.Width = 121;
             // 
             // ColQuantityExit
             // 
@@ -392,17 +394,17 @@
             // ColBalance
             // 
             this.ColBalance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColBalance.HeaderText = "Quantidade Atual";
+            this.ColBalance.HeaderText = "Saldo";
             this.ColBalance.Name = "ColBalance";
             this.ColBalance.ReadOnly = true;
-            this.ColBalance.Width = 152;
+            this.ColBalance.Width = 74;
             // 
             // FrmStorage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.ClientSize = new System.Drawing.Size(762, 447);
+            this.ClientSize = new System.Drawing.Size(883, 447);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.ndQuantityStock);
@@ -419,7 +421,7 @@
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(778, 486);
+            this.MinimumSize = new System.Drawing.Size(899, 486);
             this.Name = "FrmStorage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Estoque";

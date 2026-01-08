@@ -63,6 +63,10 @@
             this.ColDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColDateExit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColQuantityExit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblTotalExit = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeparture)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ndQuantityExit)).BeginInit();
@@ -328,6 +332,10 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.lblTotalExit);
+            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.lblQuantityRegistered);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.lblNameProduct);
@@ -342,33 +350,37 @@
             // 
             // lblQuantityRegistered
             // 
+            this.lblQuantityRegistered.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblQuantityRegistered.BackColor = System.Drawing.Color.White;
             this.lblQuantityRegistered.ForeColor = System.Drawing.Color.Black;
-            this.lblQuantityRegistered.Location = new System.Drawing.Point(556, 62);
+            this.lblQuantityRegistered.Location = new System.Drawing.Point(303, 62);
             this.lblQuantityRegistered.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblQuantityRegistered.Name = "lblQuantityRegistered";
-            this.lblQuantityRegistered.Size = new System.Drawing.Size(127, 24);
+            this.lblQuantityRegistered.Size = new System.Drawing.Size(112, 24);
             this.lblQuantityRegistered.TabIndex = 19;
             this.lblQuantityRegistered.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label7
             // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(551, 35);
+            this.label7.Location = new System.Drawing.Point(298, 35);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(136, 18);
+            this.label7.Size = new System.Drawing.Size(97, 18);
             this.label7.TabIndex = 18;
-            this.label7.Text = "Quant. cadastrado";
+            this.label7.Text = "Quant. inicial";
             // 
             // lblNameProduct
             // 
+            this.lblNameProduct.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNameProduct.BackColor = System.Drawing.Color.White;
             this.lblNameProduct.ForeColor = System.Drawing.Color.Black;
             this.lblNameProduct.Location = new System.Drawing.Point(21, 62);
             this.lblNameProduct.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameProduct.Name = "lblNameProduct";
-            this.lblNameProduct.Size = new System.Drawing.Size(526, 24);
+            this.lblNameProduct.Size = new System.Drawing.Size(274, 24);
             this.lblNameProduct.TabIndex = 16;
             this.lblNameProduct.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -467,6 +479,52 @@
             this.ColQuantityExit.Name = "ColQuantityExit";
             this.ColQuantityExit.ReadOnly = true;
             // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(423, 35);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(103, 18);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Quant. saídas";
+            // 
+            // label10
+            // 
+            this.lblTotalExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotalExit.BackColor = System.Drawing.Color.White;
+            this.lblTotalExit.ForeColor = System.Drawing.Color.Black;
+            this.lblTotalExit.Location = new System.Drawing.Point(423, 62);
+            this.lblTotalExit.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotalExit.Name = "label10";
+            this.lblTotalExit.Size = new System.Drawing.Size(112, 24);
+            this.lblTotalExit.TabIndex = 21;
+            this.lblTotalExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.BackColor = System.Drawing.Color.White;
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(543, 62);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(112, 24);
+            this.label11.TabIndex = 23;
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(543, 35);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(49, 18);
+            this.label12.TabIndex = 22;
+            this.label12.Text = "Saldo";
+            // 
             // FrmDeparture
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -542,5 +600,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColDateExit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColQuantityExit;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblTotalExit;
+        private System.Windows.Forms.Label label9;
     }
 }

@@ -92,5 +92,24 @@ namespace DataBase
                 return count;
             }
         }
+
+        public static int SumQuantityExit(int storageId)
+        {
+            using (MySqlConnection conn = new MySqlConnection(ConnString.connectionChain))
+            {
+                conn.Open();
+                string sql = $"SELECT SUM(quantity_exit) FROM departures WHERE storage_id = {storageId}";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                object result = cmd.ExecuteScalar();
+                if (result != DBNull.Value)
+                {
+                    return Convert.ToInt32(result);
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }

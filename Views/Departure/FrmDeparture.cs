@@ -8,7 +8,8 @@ namespace Interface
 {
     public partial class FrmDeparture : Form
     {
-        int page = 1, pageMaximum = 1, idDeparture, idStorage, quantityRegistered;
+        int page = 1, pageMaximum = 1, idDeparture, idStorage, quantityRegistered, quantityExit;
+        public bool isSaved = false;
 
         public FrmDeparture(int idStorage, string nameProduct, int quantityRegistered)
         {
@@ -16,6 +17,7 @@ namespace Interface
             lblNameProduct.Text = nameProduct;
             this.idStorage = idStorage;
             lblQuantityRegistered.Text =  quantityRegistered.ToString();
+            this.quantityRegistered = quantityRegistered;
         }
 
         private void btnArrowLeft_Click(object sender, EventArgs e)
@@ -164,6 +166,8 @@ namespace Interface
             CheckNumberOfPages(int.Parse(cbRows.Text));
             UpdateComboBoxItems();
             LoadDepartures();
+            lblTotalExit.Text = Departure.SumQuantityExit(idStorage).ToString();
+            label11.Text = (double.Parse(lblQuantityRegistered.Text) - double.Parse(lblTotalExit.Text)).ToString();
         }
 
         private void cbRows_SelectedIndexChanged(object sender, EventArgs e)
@@ -207,20 +211,55 @@ namespace Interface
             dgvDeparture.Cursor = e.ColumnIndex == 0 || e.ColumnIndex == 1 ? Cursors.Hand : Cursors.Arrow;
         }
 
-        private void btnRegisterExit_Click(object sender, EventArgs e)
+        private bool ValidationFields()
         {
-            if(string.IsNullOrWhiteSpace(rtDescription.Text))
+            bool isValid = false;
+
+            double totalExit = 0;
+            double currentExit = Convert.ToDouble(ndQuantityExit.Value);
+            double registeredExit = double.TryParse(lblTotalExit.Text, out var parsedExit) ? parsedExit : 0;
+
+            if (idDeparture == 0)
             {
-                MessageBox.Show("Descreva no campo 'Descrição' o motivo da saída", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                totalExit = registeredExit + currentExit;
+            }
+            else
+            {
+                double difference = Math.Max(0, currentExit - quantityExit);
+                totalExit = registeredExit + difference;
             }
 
-            try 
+            if (string.IsNullOrWhiteSpace(rtDescription.Text))
+            {
+                MessageBox.Show("Descreva no campo 'Descrição' o motivo da saída", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (totalExit > quantityRegistered)
+            {
+                MessageBox.Show(
+                    "A quantidade de saída não pode ser maior que a quantidade registrada em estoque",
+                    "Notificação de aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
+            else 
+                isValid = true;
+
+
+            return isValid;
+        }
+
+        private void btnRegisterExit_Click(object sender, EventArgs e)
+        {
+            if (!ValidationFields()) return;
+
+            try
             {
                 new Departure { dateExit = dtDateExit.Value, description = rtDescription.Text.Trim(), storageId = idStorage, id = idDeparture, quantity_exit = Convert.ToDouble(ndQuantityExit.Value) }.Save();
 
                 LoadEvents();
                 Clear();
+                isSaved = true;
             }
             catch (Exception)
             {
@@ -247,6 +286,7 @@ namespace Interface
                 idDeparture = id;
                 dtDateExit.Value = Convert.ToDateTime(dgvDeparture.CurrentRow.Cells["ColDateExit"].Value);
                 ndQuantityExit.Value = Convert.ToDecimal(dgvDeparture.CurrentRow.Cells["ColQuantityExit"].Value);
+                quantityExit = Convert.ToInt32(dgvDeparture.CurrentRow.Cells["ColQuantityExit"].Value);
                 rtDescription.Text = dgvDeparture.CurrentRow.Cells["ColDescription"].Value.ToString();
                 btnRegisterExit.Image = Resources.icons8_crie_um_novo_32;
                  btnRegisterExit.Text = "Atualizar";

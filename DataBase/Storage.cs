@@ -40,7 +40,7 @@ namespace DataBase
                 using(MySqlConnection conn = new MySqlConnection(ConnString.connectionChain))
                 {
                     conn.Open();
-                    string sql = $"SELECT id, DATE_FORMAT(date_storage, '%d/%m/%Y') as date, stock, product_id FROM storages WHERE product_id = {productId} ORDER BY date_storage DESC LIMIT {quantRows} OFFSET {page}";
+                    string sql = $"SELECT (SELECT SUM(quantity_exit) FROM departures WHERE departures.storage_id = storages.id) as total_exit, stock - (SELECT SUM(quantity_exit) FROM departures WHERE departures.storage_id = storages.id) AS balance, id, DATE_FORMAT(date_storage, '%d/%m/%Y') as date, stock, product_id FROM storages WHERE product_id = {productId} ORDER BY date_storage DESC LIMIT {quantRows} OFFSET {page}";
                     MySqlDataAdapter cmd = new MySqlDataAdapter(sql, conn);
                     DataTable dataTable = new DataTable();
                     cmd.Fill(dataTable);

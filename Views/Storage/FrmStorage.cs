@@ -2,13 +2,14 @@
 using Interface.Properties;
 using System;
 using System.Data;
+using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms;
 
 namespace Interface
 {
     public partial class FrmStorage : Form
     {
-        int page = 1, pageMaximum = 1, idProduct, idStorage;
+        int page = 1, pageMaximum = 1, idProduct, idStorage, quantityRegistered, quantityExit;
 
         public FrmStorage(int idProduct, string nameProduct)
         {
@@ -140,6 +141,8 @@ namespace Interface
                     dgvProduct.Rows[index].Cells["ColId"].Value = storage["id"].ToString();
                     dgvProduct.Rows[index].Cells["ColDateEntry"].Value = storage["date"].ToString();
                     dgvProduct.Rows[index].Cells["ColQuantityStock"].Value = storage["stock"].ToString();
+                    dgvProduct.Rows[index].Cells["ColQuantityExit"].Value = storage["total_exit"].ToString() == "" ? "0" : storage["total_exit"].ToString();
+                    dgvProduct.Rows[index].Cells["ColBalance"].Value = storage["balance"].ToString() == "" ? "0" : storage["balance"].ToString();
                     dgvProduct.Rows[index].Height = 45;
                 }
             }
@@ -221,6 +224,10 @@ namespace Interface
         {
             try 
             {
+
+                if (idStorage > 0)
+                    if(!ValidationFields(quantityRegistered, quantityExit)) return;
+
                 new Storage
                 {
                     id = idStorage,
@@ -243,6 +250,21 @@ namespace Interface
             Clear();
         }
 
+        private bool ValidationFields(double quantityStock, double quantityExit)
+        {
+            bool isValid = false;
+
+            if (Convert.ToDouble(ndQuantityStock.Value) < quantityExit)
+            {
+
+                MessageBox.Show("A quantidade da entrada inicial não pode ser menor que a quantidade que saíram do estoque", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else                 
+                isValid = true;
+            
+            return isValid;
+        }
+
         private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -254,13 +276,20 @@ namespace Interface
             
             if (dgvProduct.CurrentCell.ColumnIndex == 0)
             {
-                new FrmDeparture(Convert.ToInt32(dgvProduct.CurrentRow.Cells["ColId"].Value), lblNameProduct.Text.ToString(), Convert.ToInt32(dgvProduct.CurrentRow.Cells["ColQuantityStock"].Value)).ShowDialog();
+                FrmDeparture frmDeparture = new FrmDeparture(Convert.ToInt32(dgvProduct.CurrentRow.Cells["ColId"].Value), lblNameProduct.Text.ToString(), Convert.ToInt32(dgvProduct.CurrentRow.Cells["ColQuantityStock"].Value)); 
+                frmDeparture.ShowDialog();
+                if(frmDeparture.isSaved)
+                {
+                    LoadEvents();
+                }
             }
             else if (dgvProduct.CurrentCell.ColumnIndex == 1)
             {
                 idStorage = id;
                 dtDateEntry.Value = Convert.ToDateTime(dgvProduct.CurrentRow.Cells["ColDateEntry"].Value);
                 ndQuantityStock.Value = Convert.ToDecimal(dgvProduct.CurrentRow.Cells["ColQuantityStock"].Value);
+                quantityExit = Convert.ToInt32(dgvProduct.CurrentRow.Cells["ColQuantityExit"].Value);
+                quantityRegistered = Convert.ToInt32(ndQuantityStock.Value);
                 btnAdd.Image = Resources.icons8_crie_um_novo_32;
                 btnAdd.Text = "Atualizar";
                 btnCancel.Visible = true;
