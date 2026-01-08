@@ -21,6 +21,12 @@ namespace Interface
             quantity = Storage.CountQuantityStorages(productId);
             return CalculateNumberOfPage();
         }
+        
+        static public int SetPageQuantityDepartures(int storageId)
+        {
+            quantity = Departure.CountQuantityDepartures(storageId);
+            return CalculateNumberOfPage();
+        }
 
         static public int SetPageQuantityProductsByName(string name)
         {

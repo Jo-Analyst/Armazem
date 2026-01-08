@@ -6,26 +6,16 @@ using System.Windows.Forms;
 
 namespace Interface
 {
-    public partial class FrmStorage : Form
+    public partial class FrmDeparture : Form
     {
-        int page = 1, pageMaximum = 1, idProduct, idStorage;
+        int page = 1, pageMaximum = 1, idDeparture, idStorage, quantityRegistered;
 
-        public FrmStorage(int idProduct, string nameProduct)
+        public FrmDeparture(int idStorage, string nameProduct, int quantityRegistered)
         {
             InitializeComponent();
             lblNameProduct.Text = nameProduct;
-            this.idProduct = idProduct;
-        }
-
-
-        private void btnNewProduct_Click(object sender, EventArgs e)
-        {
-            FrmSaveProduct frmSaveProduct = new FrmSaveProduct();
-            frmSaveProduct.ShowDialog();
-            if (frmSaveProduct.isSaved)
-            {
-                LoadEvents();
-            }
+            this.idStorage = idStorage;
+            lblQuantityRegistered.Text =  quantityRegistered.ToString();
         }
 
         private void btnArrowLeft_Click(object sender, EventArgs e)
@@ -46,7 +36,7 @@ namespace Interface
             {
                 EnabledBtnArrowLeft();
             }
-            LoadStorages();
+            LoadDepartures();
         }
 
         private void btnArrowRight_Click(object sender, EventArgs e)
@@ -73,7 +63,7 @@ namespace Interface
             }
 
             EnabledBtnArrowLeft();
-            LoadStorages();
+            LoadDepartures();
         }
 
         private void DisabledBtnArrowLeft()
@@ -102,7 +92,7 @@ namespace Interface
 
         private void FrmProducts_Load(object sender, EventArgs e)
         {
-            dtDateEntry.MaxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            dtDateExit.MaxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
             cbPage.Text = "1";
             cbRows.Text = "10";
             LoadEvents();
@@ -113,34 +103,34 @@ namespace Interface
         private void CheckNumberOfPages(int numberRows)
         {
             PageData.quantityRowsSelected = numberRows;
-            pageMaximum = PageData.SetPageQuantityStorages(idProduct);
+            pageMaximum = PageData.SetPageQuantityDepartures(idStorage);
 
             if (pageMaximum > 1)
                 EnabledBtnArrowRight();
 
         }
 
-        private void LoadStorages()
+        private void LoadDepartures()
         {
             try
             {
-                dgvProduct.Rows.Clear();
+                dgvDeparture.Rows.Clear();
 
                 int quantRows = int.Parse(cbRows.Text);
                 int pageSelected = (page - 1) * quantRows;
 
-                DataTable dtStorages =  Storage.FindByProductId(idProduct, pageSelected, quantRows);
+                DataTable dtDeparture =  Departure.FindByStorageId(idStorage, pageSelected, quantRows);
 
-                foreach (DataRow storage in dtStorages.Rows)
+                foreach (DataRow storage in dtDeparture.Rows)
                 {
-                    int index = dgvProduct.Rows.Add();
-                    dgvProduct.Rows[index].Cells["ColRegisterExit"].Value = Resources.icons8_cash_register_32;
-                    dgvProduct.Rows[index].Cells["ColEdit"].Value = Resources.edit;
-                    dgvProduct.Rows[index].Cells["ColDelete"].Value = Resources.delete;
-                    dgvProduct.Rows[index].Cells["ColId"].Value = storage["id"].ToString();
-                    dgvProduct.Rows[index].Cells["ColDateEntry"].Value = storage["date"].ToString();
-                    dgvProduct.Rows[index].Cells["ColQuantityStock"].Value = storage["stock"].ToString();
-                    dgvProduct.Rows[index].Height = 45;
+                    int index = dgvDeparture.Rows.Add();
+                    dgvDeparture.Rows[index].Cells["ColEdit"].Value = Resources.edit;
+                    dgvDeparture.Rows[index].Cells["ColDelete"].Value = Resources.delete;
+                    dgvDeparture.Rows[index].Cells["ColId"].Value = storage["id"].ToString();
+                    dgvDeparture.Rows[index].Cells["ColDateExit"].Value = storage["date"].ToString();
+                    dgvDeparture.Rows[index].Cells["ColQuantityExit"].Value = storage["quantity_exit"].ToString();
+                    dgvDeparture.Rows[index].Cells["ColDescription"].Value = storage["description"].ToString();
+                    dgvDeparture.Rows[index].Height = 45;
                 }
             }
             catch (Exception)
@@ -163,7 +153,7 @@ namespace Interface
         private void FrmProducts_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-                btnAdd.PerformClick();
+                btnRegisterExit.PerformClick();
             else if (e.KeyCode == Keys.Escape)
                 btnCancel.PerformClick();
 
@@ -173,7 +163,7 @@ namespace Interface
         {
             CheckNumberOfPages(int.Parse(cbRows.Text));
             UpdateComboBoxItems();
-            LoadStorages();
+            LoadDepartures();
         }
 
         private void cbRows_SelectedIndexChanged(object sender, EventArgs e)
@@ -191,7 +181,7 @@ namespace Interface
             page = int.Parse(cbPage.Text);
             if (pageMaximum == 1) return;
 
-            LoadStorages();
+            LoadDepartures();
 
             if (page == 1)
             {
@@ -212,22 +202,22 @@ namespace Interface
 
         }
 
-        private void dgvProducts_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        private void dgvDeparture_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            dgvProduct.Cursor = e.ColumnIndex == 0 || e.ColumnIndex == 1 || e.ColumnIndex == 2 ? Cursors.Hand : Cursors.Arrow;
+            dgvDeparture.Cursor = e.ColumnIndex == 0 || e.ColumnIndex == 1 ? Cursors.Hand : Cursors.Arrow;
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnRegisterExit_Click(object sender, EventArgs e)
         {
+            if(string.IsNullOrWhiteSpace(rtDescription.Text))
+            {
+                MessageBox.Show("Descreva no campo 'Descrição' o motivo da saída", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             try 
             {
-                new Storage
-                {
-                    id = idStorage,
-                    dateStorage = dtDateEntry.Value.ToString("yyyy-MM-dd"),
-                    stock = double.Parse(ndQuantityStock.Value.ToString().Replace(",", ".")),
-                    productId = idProduct
-                }.Save();
+                new Departure { dateExit = dtDateExit.Value, description = rtDescription.Text.Trim(), storageId = idStorage, id = idDeparture, quantity_exit = Convert.ToDouble(ndQuantityExit.Value) }.Save();
 
                 LoadEvents();
                 Clear();
@@ -243,29 +233,26 @@ namespace Interface
             Clear();
         }
 
-        private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvDeparture_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
             bool isConfirmed = false;
 
             if (e.RowIndex == -1) return;
 
-            int id = Convert.ToInt32(dgvProduct.CurrentRow.Cells["ColId"].Value);
+            int id = Convert.ToInt32(dgvDeparture.CurrentRow.Cells["ColId"].Value);
             
-            if (dgvProduct.CurrentCell.ColumnIndex == 0)
+            if (dgvDeparture.CurrentCell.ColumnIndex == 0)
             {
-                new FrmDeparture(Convert.ToInt32(dgvProduct.CurrentRow.Cells["ColId"].Value), lblNameProduct.Text.ToString(), Convert.ToInt32(dgvProduct.CurrentRow.Cells["ColQuantityStock"].Value)).ShowDialog();
-            }
-            else if (dgvProduct.CurrentCell.ColumnIndex == 1)
-            {
-                idStorage = id;
-                dtDateEntry.Value = Convert.ToDateTime(dgvProduct.CurrentRow.Cells["ColDateEntry"].Value);
-                ndQuantityStock.Value = Convert.ToDecimal(dgvProduct.CurrentRow.Cells["ColQuantityStock"].Value);
-                btnAdd.Image = Resources.icons8_crie_um_novo_32;
-                btnAdd.Text = "Atualizar";
+                idDeparture = id;
+                dtDateExit.Value = Convert.ToDateTime(dgvDeparture.CurrentRow.Cells["ColDateExit"].Value);
+                ndQuantityExit.Value = Convert.ToDecimal(dgvDeparture.CurrentRow.Cells["ColQuantityExit"].Value);
+                rtDescription.Text = dgvDeparture.CurrentRow.Cells["ColDescription"].Value.ToString();
+                btnRegisterExit.Image = Resources.icons8_crie_um_novo_32;
+                 btnRegisterExit.Text = "Atualizar";
                 btnCancel.Visible = true;
             }
-            else if (dgvProduct.CurrentCell.ColumnIndex == 2)
+            else if (dgvDeparture.CurrentCell.ColumnIndex == 1)
             {
                 DialogResult dr = MessageBox.Show($"Deseja mesmo excluir?", "Controle do almoxarifado", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
@@ -273,8 +260,9 @@ namespace Interface
                 {
                     try
                     {
-                        Storage.Delete(id);
+                        Departure.Delete(id);
                         isConfirmed = true;
+                       
                     }
                     catch (Exception)
                     {
@@ -292,11 +280,12 @@ namespace Interface
 
         private void Clear()
         {
-            idStorage = 0;
-            dtDateEntry.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-            ndQuantityStock.Value = 1;
-            btnAdd.Image = Resources.icons8_plus_key_32;
-            btnAdd.Text = "Adicionar";
+            idDeparture = 0;
+            dtDateExit.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            rtDescription.Clear();
+            ndQuantityExit.Value = 1;
+             btnRegisterExit.Image = Resources.icons8_plus_key_32;
+             btnRegisterExit.Text = "Adicionar";
             btnCancel.Visible = false;
         }
 

@@ -34,7 +34,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnSetting = new System.Windows.Forms.Button();
             this.btnReport = new System.Windows.Forms.Button();
-            this.btnRegisterExit = new System.Windows.Forms.Button();
             this.btnProduct = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
@@ -70,7 +69,6 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.btnSetting);
             this.panel2.Controls.Add(this.btnReport);
-            this.panel2.Controls.Add(this.btnRegisterExit);
             this.panel2.Controls.Add(this.btnProduct);
             this.panel2.Location = new System.Drawing.Point(530, 22);
             this.panel2.Name = "panel2";
@@ -85,7 +83,7 @@
             this.btnSetting.ForeColor = System.Drawing.Color.White;
             this.btnSetting.Image = ((System.Drawing.Image)(resources.GetObject("btnSetting.Image")));
             this.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSetting.Location = new System.Drawing.Point(19, 278);
+            this.btnSetting.Location = new System.Drawing.Point(19, 266);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.Size = new System.Drawing.Size(215, 68);
             this.btnSetting.TabIndex = 10;
@@ -101,29 +99,13 @@
             this.btnReport.ForeColor = System.Drawing.Color.White;
             this.btnReport.Image = ((System.Drawing.Image)(resources.GetObject("btnReport.Image")));
             this.btnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReport.Location = new System.Drawing.Point(19, 191);
+            this.btnReport.Location = new System.Drawing.Point(19, 147);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(215, 68);
             this.btnReport.TabIndex = 9;
             this.btnReport.TabStop = false;
             this.btnReport.Text = "Relatório";
             this.btnReport.UseVisualStyleBackColor = true;
-            // 
-            // btnRegisterExit
-            // 
-            this.btnRegisterExit.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnRegisterExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegisterExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegisterExit.ForeColor = System.Drawing.Color.White;
-            this.btnRegisterExit.Image = ((System.Drawing.Image)(resources.GetObject("btnRegisterExit.Image")));
-            this.btnRegisterExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRegisterExit.Location = new System.Drawing.Point(19, 102);
-            this.btnRegisterExit.Name = "btnRegisterExit";
-            this.btnRegisterExit.Size = new System.Drawing.Size(215, 68);
-            this.btnRegisterExit.TabIndex = 8;
-            this.btnRegisterExit.TabStop = false;
-            this.btnRegisterExit.Text = "Registrar saída";
-            this.btnRegisterExit.UseVisualStyleBackColor = true;
             // 
             // btnProduct
             // 
@@ -133,7 +115,7 @@
             this.btnProduct.ForeColor = System.Drawing.Color.White;
             this.btnProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnProduct.Image")));
             this.btnProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProduct.Location = new System.Drawing.Point(19, 14);
+            this.btnProduct.Location = new System.Drawing.Point(19, 29);
             this.btnProduct.Name = "btnProduct";
             this.btnProduct.Size = new System.Drawing.Size(215, 68);
             this.btnProduct.TabIndex = 7;
@@ -188,7 +170,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnSetting;
         private System.Windows.Forms.Button btnReport;
-        private System.Windows.Forms.Button btnRegisterExit;
         private System.Windows.Forms.Button btnProduct;
     }
 }

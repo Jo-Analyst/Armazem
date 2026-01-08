@@ -105,16 +105,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmControlArmazen.cs">
+    <Compile Include="Views\Departure\FrmDeparture.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmControlArmazen.Designer.cs">
+    <Compile Include="Views\Departure\FrmDeparture.Designer.cs">
+      <DependentUpon>FrmDeparture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmControlArmazen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmControlArmazen.Designer.cs">
       <DependentUpon>FrmControlArmazen.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmLoading.cs">
+    <Compile Include="Views\FrmLoading.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmLoading.Designer.cs">
+    <Compile Include="Views\FrmLoading.Designer.cs">
       <DependentUpon>FrmLoading.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
@@ -140,10 +146,13 @@
     <Compile Include="Views\Storage\FrmStorage.Designer.cs">
       <DependentUpon>FrmStorage.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FrmControlArmazen.resx">
+    <EmbeddedResource Include="Views\Departure\FrmDeparture.resx">
+      <DependentUpon>FrmDeparture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmControlArmazen.resx">
       <DependentUpon>FrmControlArmazen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmLoading.resx">
+    <EmbeddedResource Include="Views\FrmLoading.resx">
       <DependentUpon>FrmLoading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Product\FrmSaveProduct.resx">
@@ -222,6 +231,8 @@
   <ItemGroup>
     <None Include="assets\icons8-crie-um-novo-32.png" />
     <None Include="assets\icons8-plus-key-32.png" />
+    <None Include="assets\icons8-cash-register-32.png" />
+    <None Include="assets\icons8-caixa-registradora-32.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -34,11 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStorage));
             this.dgvProduct = new System.Windows.Forms.DataGridView();
-            this.ColEdit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColDelete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDateEntry = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColQuantityStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cbRows = new System.Windows.Forms.ComboBox();
             this.cbPage = new System.Windows.Forms.ComboBox();
@@ -55,6 +50,14 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnArrowRight = new System.Windows.Forms.Button();
             this.btnArrowLeft = new System.Windows.Forms.Button();
+            this.ColRegisterExit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDateEntry = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColQuantityStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColQuantityExit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ndQuantityStock)).BeginInit();
@@ -82,11 +85,14 @@
             this.dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProduct.ColumnHeadersHeight = 40;
             this.dgvProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColRegisterExit,
             this.ColEdit,
             this.ColDelete,
             this.ColId,
             this.ColDateEntry,
-            this.ColQuantityStock});
+            this.ColQuantityStock,
+            this.ColQuantityExit,
+            this.ColBalance});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -115,43 +121,6 @@
             this.dgvProduct.TabIndex = 0;
             this.dgvProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellClick);
             this.dgvProduct.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellMouseEnter);
-            // 
-            // ColEdit
-            // 
-            this.ColEdit.HeaderText = "Editar";
-            this.ColEdit.Name = "ColEdit";
-            this.ColEdit.ReadOnly = true;
-            // 
-            // ColDelete
-            // 
-            this.ColDelete.HeaderText = "Excluir";
-            this.ColDelete.Name = "ColDelete";
-            this.ColDelete.ReadOnly = true;
-            // 
-            // ColId
-            // 
-            this.ColId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColId.HeaderText = "Id";
-            this.ColId.MinimumWidth = 6;
-            this.ColId.Name = "ColId";
-            this.ColId.ReadOnly = true;
-            this.ColId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColId.Visible = false;
-            this.ColId.Width = 26;
-            // 
-            // ColDateEntry
-            // 
-            this.ColDateEntry.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColDateEntry.HeaderText = "Data de Entrada";
-            this.ColDateEntry.MinimumWidth = 6;
-            this.ColDateEntry.Name = "ColDateEntry";
-            this.ColDateEntry.ReadOnly = true;
-            // 
-            // ColQuantityStock
-            // 
-            this.ColQuantityStock.HeaderText = "Quantidade";
-            this.ColQuantityStock.Name = "ColQuantityStock";
-            this.ColQuantityStock.ReadOnly = true;
             // 
             // panel1
             // 
@@ -365,6 +334,69 @@
             this.btnArrowLeft.UseVisualStyleBackColor = true;
             this.btnArrowLeft.Click += new System.EventHandler(this.btnArrowLeft_Click);
             // 
+            // ColRegisterExit
+            // 
+            this.ColRegisterExit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColRegisterExit.HeaderText = "Registrar Saída";
+            this.ColRegisterExit.Name = "ColRegisterExit";
+            this.ColRegisterExit.ReadOnly = true;
+            this.ColRegisterExit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColRegisterExit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColRegisterExit.Width = 142;
+            // 
+            // ColEdit
+            // 
+            this.ColEdit.HeaderText = "Editar";
+            this.ColEdit.Name = "ColEdit";
+            this.ColEdit.ReadOnly = true;
+            // 
+            // ColDelete
+            // 
+            this.ColDelete.HeaderText = "Excluir";
+            this.ColDelete.Name = "ColDelete";
+            this.ColDelete.ReadOnly = true;
+            // 
+            // ColId
+            // 
+            this.ColId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColId.HeaderText = "Id";
+            this.ColId.MinimumWidth = 6;
+            this.ColId.Name = "ColId";
+            this.ColId.ReadOnly = true;
+            this.ColId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColId.Visible = false;
+            this.ColId.Width = 26;
+            // 
+            // ColDateEntry
+            // 
+            this.ColDateEntry.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColDateEntry.HeaderText = "Data de Entrada";
+            this.ColDateEntry.MinimumWidth = 6;
+            this.ColDateEntry.Name = "ColDateEntry";
+            this.ColDateEntry.ReadOnly = true;
+            // 
+            // ColQuantityStock
+            // 
+            this.ColQuantityStock.HeaderText = "Quantidade";
+            this.ColQuantityStock.Name = "ColQuantityStock";
+            this.ColQuantityStock.ReadOnly = true;
+            // 
+            // ColQuantityExit
+            // 
+            this.ColQuantityExit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColQuantityExit.HeaderText = "Quant. de saídas";
+            this.ColQuantityExit.Name = "ColQuantityExit";
+            this.ColQuantityExit.ReadOnly = true;
+            this.ColQuantityExit.Width = 150;
+            // 
+            // ColBalance
+            // 
+            this.ColBalance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColBalance.HeaderText = "Quantidade Atual";
+            this.ColBalance.Name = "ColBalance";
+            this.ColBalance.ReadOnly = true;
+            this.ColBalance.Width = 152;
+            // 
             // FrmStorage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -383,12 +415,11 @@
             this.Controls.Add(this.dgvProduct);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(778, 486);
             this.Name = "FrmStorage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Estoque";
@@ -421,11 +452,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown ndQuantityStock;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.DataGridViewImageColumn ColRegisterExit;
         private System.Windows.Forms.DataGridViewImageColumn ColEdit;
         private System.Windows.Forms.DataGridViewImageColumn ColDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColDateEntry;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColQuantityStock;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColQuantityExit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColBalance;
     }
 }
