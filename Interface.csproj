@@ -67,6 +67,9 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ícone-minimalista-re.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DataBase">
       <HintPath>DataBase\bin\Debug\DataBase.dll</HintPath>
@@ -117,10 +120,10 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Utils\PageData.cs" />
     <Compile Include="Utils\PrintRDLC.cs" />
-    <Compile Include="Views\FrmSaveProduct.cs">
+    <Compile Include="Views\Product\FrmSaveProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmSaveProduct.Designer.cs">
+    <Compile Include="Views\Product\FrmSaveProduct.Designer.cs">
       <DependentUpon>FrmSaveProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -131,10 +134,10 @@
     <Compile Include="Views\Product\FrmProducts.Designer.cs">
       <DependentUpon>FrmProducts.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Product\FrmStorage.cs">
+    <Compile Include="Views\Storage\FrmStorage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Product\FrmStorage.Designer.cs">
+    <Compile Include="Views\Storage\FrmStorage.Designer.cs">
       <DependentUpon>FrmStorage.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FrmControlArmazen.resx">
@@ -143,7 +146,7 @@
     <EmbeddedResource Include="FrmLoading.resx">
       <DependentUpon>FrmLoading.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmSaveProduct.resx">
+    <EmbeddedResource Include="Views\Product\FrmSaveProduct.resx">
       <DependentUpon>FrmSaveProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -159,7 +162,7 @@
     <EmbeddedResource Include="Views\Product\FrmProducts.resx">
       <DependentUpon>FrmProducts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Product\FrmStorage.resx">
+    <EmbeddedResource Include="Views\Storage\FrmStorage.resx">
       <DependentUpon>FrmStorage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -206,9 +209,7 @@
   <ItemGroup>
     <None Include="Resources\right-arrow-white.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Product\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\add-post.png" />
   </ItemGroup>
@@ -219,6 +220,8 @@
     <None Include="Resources\edit.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="assets\icons8-crie-um-novo-32.png" />
+    <None Include="assets\icons8-plus-key-32.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -232,6 +235,7 @@
     <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="ícone-minimalista-re.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

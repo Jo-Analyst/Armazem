@@ -102,7 +102,7 @@ namespace Interface
 
         private void FrmProducts_Load(object sender, EventArgs e)
         {
-            dtDateEntry.MaxDate = DateTime.Now;
+            dtDateEntry.MaxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
             cbPage.Text = "1";
             cbRows.Text = "10";
             LoadEvents();
@@ -227,11 +227,17 @@ namespace Interface
                 }.Save();
 
                 LoadEvents();
+                Clear();
             }
             catch (Exception)
             {
                 MessageBox.Show("Houve um erro no sistema. Tente novamente", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Clear();
         }
 
         private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -248,6 +254,9 @@ namespace Interface
                 idStorage = id;
                 dtDateEntry.Value = Convert.ToDateTime(dgvProduct.CurrentRow.Cells["ColDateEntry"].Value);
                 ndQuantityStock.Value = Convert.ToDecimal(dgvProduct.CurrentRow.Cells["ColQuantityStock"].Value);
+                btnAdd.Image = Resources.icons8_crie_um_novo_32;
+                btnAdd.Text = "Atualizar";
+                btnCancel.Visible = true;
             }
             else if (dgvProduct.CurrentCell.ColumnIndex == 1)
             {
@@ -268,6 +277,16 @@ namespace Interface
             }
 
             if (isConfirmed) LoadEvents();
+        }
+
+        private void Clear()
+        {
+            idStorage = 0;
+            dtDateEntry.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            ndQuantityStock.Value = 1;
+            btnAdd.Image = Resources.icons8_plus_key_32;
+            btnAdd.Text = "Adicionar";
+            btnCancel.Visible = false;
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
