@@ -26,6 +26,13 @@ namespace Interface
         {
             try
             {
+                if(string.IsNullOrWhiteSpace(txtName.Text))
+                {
+                    MessageBox.Show("O nome do produto é obrigatório", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtName.Focus();
+                    return;
+                }
+
                 Product product = new Product();
                 product.Id = idProduct;
                 product.Name = txtName.Text.Trim();

@@ -169,6 +169,8 @@ namespace Interface
                 btnAdd.PerformClick();
             else if (e.KeyCode == Keys.Escape)
                 btnCancel.PerformClick();
+            else if (e.Control && e.KeyCode == Keys.Right && btnArrowRight.Enabled) btnArrowRight_Click(sender, e);
+            else if (e.Control && e.KeyCode == Keys.Left && btnArrowLeft.Enabled) btnArrowLeft_Click(sender, e);
 
         }
 
