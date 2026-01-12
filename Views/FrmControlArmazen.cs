@@ -18,5 +18,10 @@ namespace Interface
         {
             new FrmProducts().ShowDialog();
         }
+
+        private void btnReport_Click(object sender, System.EventArgs e)
+        {
+            new FrmReport().ShowDialog();
+        }
     }
 }

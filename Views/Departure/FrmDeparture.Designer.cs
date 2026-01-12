@@ -29,11 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDeparture));
             this.dgvDeparture = new System.Windows.Forms.DataGridView();
+            this.ColEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDateExit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColQuantityExit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cbRows = new System.Windows.Forms.ComboBox();
             this.cbPage = new System.Windows.Forms.ComboBox();
@@ -49,6 +55,12 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnRegisterExit = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Label13 = new System.Windows.Forms.Label();
+            this.lblDateEntry = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblTotalExit = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.lblQuantityRegistered = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lblNameProduct = new System.Windows.Forms.Label();
@@ -57,16 +69,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.rtDescription = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.ColEdit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColDelete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDateExit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColQuantityExit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lblTotalExit = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeparture)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ndQuantityExit)).BeginInit();
@@ -86,14 +88,14 @@
             this.dgvDeparture.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.dgvDeparture.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDeparture.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDeparture.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDeparture.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDeparture.ColumnHeadersHeight = 40;
             this.dgvDeparture.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColEdit,
@@ -102,34 +104,86 @@
             this.ColDescription,
             this.ColDateExit,
             this.ColQuantityExit});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDeparture.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDeparture.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDeparture.EnableHeadersVisualStyles = false;
             this.dgvDeparture.Location = new System.Drawing.Point(33, 336);
             this.dgvDeparture.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvDeparture.MultiSelect = false;
             this.dgvDeparture.Name = "dgvDeparture";
             this.dgvDeparture.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDeparture.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDeparture.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvDeparture.RowHeadersVisible = false;
             this.dgvDeparture.RowHeadersWidth = 51;
-            this.dgvDeparture.Size = new System.Drawing.Size(717, 107);
+            this.dgvDeparture.Size = new System.Drawing.Size(855, 107);
             this.dgvDeparture.TabIndex = 0;
             this.dgvDeparture.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeparture_CellClick);
             this.dgvDeparture.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeparture_CellMouseEnter);
+            // 
+            // ColEdit
+            // 
+            this.ColEdit.HeaderText = "Editar";
+            this.ColEdit.MinimumWidth = 6;
+            this.ColEdit.Name = "ColEdit";
+            this.ColEdit.ReadOnly = true;
+            this.ColEdit.Width = 125;
+            // 
+            // ColDelete
+            // 
+            this.ColDelete.HeaderText = "Excluir";
+            this.ColDelete.MinimumWidth = 6;
+            this.ColDelete.Name = "ColDelete";
+            this.ColDelete.ReadOnly = true;
+            this.ColDelete.Width = 125;
+            // 
+            // ColId
+            // 
+            this.ColId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColId.HeaderText = "Id";
+            this.ColId.MinimumWidth = 6;
+            this.ColId.Name = "ColId";
+            this.ColId.ReadOnly = true;
+            this.ColId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColId.Visible = false;
+            this.ColId.Width = 26;
+            // 
+            // ColDescription
+            // 
+            this.ColDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColDescription.HeaderText = "Descrição";
+            this.ColDescription.MinimumWidth = 6;
+            this.ColDescription.Name = "ColDescription";
+            this.ColDescription.ReadOnly = true;
+            // 
+            // ColDateExit
+            // 
+            this.ColDateExit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColDateExit.HeaderText = "Data da saída";
+            this.ColDateExit.MinimumWidth = 6;
+            this.ColDateExit.Name = "ColDateExit";
+            this.ColDateExit.ReadOnly = true;
+            this.ColDateExit.Width = 131;
+            // 
+            // ColQuantityExit
+            // 
+            this.ColQuantityExit.HeaderText = "Quantidade";
+            this.ColQuantityExit.MinimumWidth = 6;
+            this.ColQuantityExit.Name = "ColQuantityExit";
+            this.ColQuantityExit.ReadOnly = true;
+            this.ColQuantityExit.Width = 125;
             // 
             // panel1
             // 
@@ -144,7 +198,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 450);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(762, 49);
+            this.panel1.Size = new System.Drawing.Size(900, 49);
             this.panel1.TabIndex = 3;
             // 
             // cbRows
@@ -177,7 +231,7 @@
             this.cbPage.FormattingEnabled = true;
             this.cbPage.IntegralHeight = false;
             this.cbPage.ItemHeight = 18;
-            this.cbPage.Location = new System.Drawing.Point(539, 11);
+            this.cbPage.Location = new System.Drawing.Point(677, 11);
             this.cbPage.Margin = new System.Windows.Forms.Padding(19, 17, 19, 17);
             this.cbPage.Name = "cbPage";
             this.cbPage.Size = new System.Drawing.Size(97, 26);
@@ -188,7 +242,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(470, 14);
+            this.label2.Location = new System.Drawing.Point(608, 14);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 18);
@@ -214,7 +268,7 @@
             this.btnArrowRight.FlatAppearance.BorderSize = 0;
             this.btnArrowRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnArrowRight.Image = global::Interface.Properties.Resources.right_arrow_grey;
-            this.btnArrowRight.Location = new System.Drawing.Point(705, 6);
+            this.btnArrowRight.Location = new System.Drawing.Point(843, 6);
             this.btnArrowRight.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnArrowRight.Name = "btnArrowRight";
             this.btnArrowRight.Size = new System.Drawing.Size(38, 35);
@@ -232,7 +286,7 @@
             this.btnArrowLeft.FlatAppearance.BorderSize = 0;
             this.btnArrowLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnArrowLeft.Image = global::Interface.Properties.Resources.left_arrow_grey;
-            this.btnArrowLeft.Location = new System.Drawing.Point(659, 6);
+            this.btnArrowLeft.Location = new System.Drawing.Point(797, 6);
             this.btnArrowLeft.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnArrowLeft.Name = "btnArrowLeft";
             this.btnArrowLeft.Size = new System.Drawing.Size(38, 35);
@@ -246,7 +300,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(488, 171);
+            this.label5.Location = new System.Drawing.Point(626, 171);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(106, 18);
@@ -257,7 +311,7 @@
             // 
             this.dtDateExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtDateExit.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtDateExit.Location = new System.Drawing.Point(491, 197);
+            this.dtDateExit.Location = new System.Drawing.Point(629, 197);
             this.dtDateExit.Name = "dtDateExit";
             this.dtDateExit.Size = new System.Drawing.Size(126, 26);
             this.dtDateExit.TabIndex = 1;
@@ -266,7 +320,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(620, 171);
+            this.label4.Location = new System.Drawing.Point(758, 171);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 18);
@@ -276,7 +330,7 @@
             // ndQuantityExit
             // 
             this.ndQuantityExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ndQuantityExit.Location = new System.Drawing.Point(623, 197);
+            this.ndQuantityExit.Location = new System.Drawing.Point(761, 197);
             this.ndQuantityExit.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -303,7 +357,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(371, 256);
+            this.btnCancel.Location = new System.Drawing.Point(509, 256);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(180, 52);
             this.btnCancel.TabIndex = 22;
@@ -318,7 +372,7 @@
             this.btnRegisterExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRegisterExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegisterExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRegisterExit.Location = new System.Drawing.Point(557, 256);
+            this.btnRegisterExit.Location = new System.Drawing.Point(695, 256);
             this.btnRegisterExit.Name = "btnRegisterExit";
             this.btnRegisterExit.Size = new System.Drawing.Size(193, 52);
             this.btnRegisterExit.TabIndex = 3;
@@ -332,6 +386,8 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.Label13);
+            this.groupBox1.Controls.Add(this.lblDateEntry);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.lblTotalExit);
@@ -343,17 +399,84 @@
             this.groupBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.groupBox1.Location = new System.Drawing.Point(31, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(702, 122);
+            this.groupBox1.Size = new System.Drawing.Size(840, 122);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            // 
+            // Label13
+            // 
+            this.Label13.AutoSize = true;
+            this.Label13.Location = new System.Drawing.Point(15, 35);
+            this.Label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label13.Name = "Label13";
+            this.Label13.Size = new System.Drawing.Size(99, 18);
+            this.Label13.TabIndex = 26;
+            this.Label13.Text = "Data entrada";
+            // 
+            // lblDateEntry
+            // 
+            this.lblDateEntry.BackColor = System.Drawing.Color.White;
+            this.lblDateEntry.ForeColor = System.Drawing.Color.Black;
+            this.lblDateEntry.Location = new System.Drawing.Point(15, 62);
+            this.lblDateEntry.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDateEntry.Name = "lblDateEntry";
+            this.lblDateEntry.Size = new System.Drawing.Size(116, 24);
+            this.lblDateEntry.TabIndex = 25;
+            this.lblDateEntry.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.BackColor = System.Drawing.Color.White;
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(681, 62);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(112, 24);
+            this.label11.TabIndex = 23;
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(681, 35);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(49, 18);
+            this.label12.TabIndex = 22;
+            this.label12.Text = "Saldo";
+            // 
+            // lblTotalExit
+            // 
+            this.lblTotalExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotalExit.BackColor = System.Drawing.Color.White;
+            this.lblTotalExit.ForeColor = System.Drawing.Color.Black;
+            this.lblTotalExit.Location = new System.Drawing.Point(561, 62);
+            this.lblTotalExit.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotalExit.Name = "lblTotalExit";
+            this.lblTotalExit.Size = new System.Drawing.Size(112, 24);
+            this.lblTotalExit.TabIndex = 21;
+            this.lblTotalExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(561, 35);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(103, 18);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Quant. saídas";
             // 
             // lblQuantityRegistered
             // 
             this.lblQuantityRegistered.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblQuantityRegistered.BackColor = System.Drawing.Color.White;
             this.lblQuantityRegistered.ForeColor = System.Drawing.Color.Black;
-            this.lblQuantityRegistered.Location = new System.Drawing.Point(303, 62);
+            this.lblQuantityRegistered.Location = new System.Drawing.Point(441, 62);
             this.lblQuantityRegistered.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblQuantityRegistered.Name = "lblQuantityRegistered";
             this.lblQuantityRegistered.Size = new System.Drawing.Size(112, 24);
@@ -364,7 +487,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(298, 35);
+            this.label7.Location = new System.Drawing.Point(436, 35);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(97, 18);
@@ -377,17 +500,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNameProduct.BackColor = System.Drawing.Color.White;
             this.lblNameProduct.ForeColor = System.Drawing.Color.Black;
-            this.lblNameProduct.Location = new System.Drawing.Point(21, 62);
+            this.lblNameProduct.Location = new System.Drawing.Point(143, 62);
             this.lblNameProduct.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameProduct.Name = "lblNameProduct";
-            this.lblNameProduct.Size = new System.Drawing.Size(274, 24);
+            this.lblNameProduct.Size = new System.Drawing.Size(286, 24);
             this.lblNameProduct.TabIndex = 16;
             this.lblNameProduct.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 35);
+            this.label3.Location = new System.Drawing.Point(139, 35);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(129, 18);
@@ -418,7 +541,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtDescription.Location = new System.Drawing.Point(31, 169);
             this.rtDescription.Name = "rtDescription";
-            this.rtDescription.Size = new System.Drawing.Size(454, 68);
+            this.rtDescription.Size = new System.Drawing.Size(592, 68);
             this.rtDescription.TabIndex = 24;
             this.rtDescription.Text = "";
             // 
@@ -434,103 +557,12 @@
             this.label8.TabIndex = 25;
             this.label8.Text = "Descrição";
             // 
-            // ColEdit
-            // 
-            this.ColEdit.HeaderText = "Editar";
-            this.ColEdit.Name = "ColEdit";
-            this.ColEdit.ReadOnly = true;
-            // 
-            // ColDelete
-            // 
-            this.ColDelete.HeaderText = "Excluir";
-            this.ColDelete.Name = "ColDelete";
-            this.ColDelete.ReadOnly = true;
-            // 
-            // ColId
-            // 
-            this.ColId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColId.HeaderText = "Id";
-            this.ColId.MinimumWidth = 6;
-            this.ColId.Name = "ColId";
-            this.ColId.ReadOnly = true;
-            this.ColId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColId.Visible = false;
-            this.ColId.Width = 26;
-            // 
-            // ColDescription
-            // 
-            this.ColDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColDescription.HeaderText = "Descrição";
-            this.ColDescription.Name = "ColDescription";
-            this.ColDescription.ReadOnly = true;
-            // 
-            // ColDateExit
-            // 
-            this.ColDateExit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColDateExit.HeaderText = "Data da saída";
-            this.ColDateExit.MinimumWidth = 6;
-            this.ColDateExit.Name = "ColDateExit";
-            this.ColDateExit.ReadOnly = true;
-            this.ColDateExit.Width = 131;
-            // 
-            // ColQuantityExit
-            // 
-            this.ColQuantityExit.HeaderText = "Quantidade";
-            this.ColQuantityExit.Name = "ColQuantityExit";
-            this.ColQuantityExit.ReadOnly = true;
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(423, 35);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(103, 18);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "Quant. saídas";
-            // 
-            // label10
-            // 
-            this.lblTotalExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTotalExit.BackColor = System.Drawing.Color.White;
-            this.lblTotalExit.ForeColor = System.Drawing.Color.Black;
-            this.lblTotalExit.Location = new System.Drawing.Point(423, 62);
-            this.lblTotalExit.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTotalExit.Name = "label10";
-            this.lblTotalExit.Size = new System.Drawing.Size(112, 24);
-            this.lblTotalExit.TabIndex = 21;
-            this.lblTotalExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.BackColor = System.Drawing.Color.White;
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(543, 62);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(112, 24);
-            this.label11.TabIndex = 23;
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(543, 35);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(49, 18);
-            this.label12.TabIndex = 22;
-            this.label12.Text = "Saldo";
-            // 
             // FrmDeparture
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.ClientSize = new System.Drawing.Size(762, 499);
+            this.ClientSize = new System.Drawing.Size(900, 499);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.rtDescription);
             this.Controls.Add(this.panel2);
@@ -604,5 +636,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblTotalExit;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label Label13;
+        private System.Windows.Forms.Label lblDateEntry;
     }
 }

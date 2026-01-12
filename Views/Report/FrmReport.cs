@@ -2,20 +2,18 @@
 using Interface.Properties;
 using System;
 using System.Data;
-using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms;
 
 namespace Interface
 {
-    public partial class FrmStorage : Form
+    public partial class FrmReport : Form
     {
-        int page = 1, pageMaximum = 1, idProduct, idStorage, quantityRegistered, quantityExit;
 
-        public FrmStorage(int idProduct, string nameProduct)
+        int page = 1, pageMaximum = 1;
+
+        public FrmReport()
         {
             InitializeComponent();
-            lblNameProduct.Text = nameProduct;
-            this.idProduct = idProduct;
         }
 
 
@@ -47,7 +45,7 @@ namespace Interface
             {
                 EnabledBtnArrowLeft();
             }
-            LoadStorages();
+            LoadProducts();
         }
 
         private void btnArrowRight_Click(object sender, EventArgs e)
@@ -74,7 +72,7 @@ namespace Interface
             }
 
             EnabledBtnArrowLeft();
-            LoadStorages();
+            LoadProducts();
         }
 
         private void DisabledBtnArrowLeft()
@@ -103,25 +101,24 @@ namespace Interface
 
         private void FrmProducts_Load(object sender, EventArgs e)
         {
-            dtDateEntry.MaxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
             cbPage.Text = "1";
             cbRows.Text = "10";
             LoadEvents();
             this.cbRows.SelectedIndexChanged += cbRows_SelectedIndexChanged;
-            this.cbPage.SelectedIndexChanged += new EventHandler(this.cbPage_SelectedIndexChanged);
+            this.cbPage.SelectedIndexChanged += new System.EventHandler(this.cbPage_SelectedIndexChanged);
         }
 
         private void CheckNumberOfPages(int numberRows)
         {
             PageData.quantityRowsSelected = numberRows;
-            pageMaximum = PageData.SetPageQuantityStorages(idProduct);
+            pageMaximum = string.IsNullOrWhiteSpace(txtName.Text) ? PageData.SetPageQuantityProducts() : PageData.SetPageQuantityProductsByName(txtName.Text);
 
             if (pageMaximum > 1)
                 EnabledBtnArrowRight();
 
         }
 
-        private void LoadStorages()
+        private void LoadProducts()
         {
             try
             {
@@ -130,26 +127,31 @@ namespace Interface
                 int quantRows = int.Parse(cbRows.Text);
                 int pageSelected = (page - 1) * quantRows;
 
-                DataTable dtStorages =  Storage.FindByProductId(idProduct, pageSelected, quantRows);
+                DataTable dtProducts = string.IsNullOrWhiteSpace(txtName.Text) ? Product.FindAll(pageSelected, quantRows)
+                    : Product.FindByName(txtName.Text.Trim(), pageSelected, quantRows);
 
-                foreach (DataRow storage in dtStorages.Rows)
+                foreach (DataRow storage in dtProducts.Rows)
                 {
                     int index = dgvProduct.Rows.Add();
-                    dgvProduct.Rows[index].Cells["ColRegisterExit"].Value = Resources.icons8_cash_register_32;
+                    dgvProduct.Rows[index].Cells["ColADD"].Value = Resources.add_post;
                     dgvProduct.Rows[index].Cells["ColEdit"].Value = Resources.edit;
                     dgvProduct.Rows[index].Cells["ColDelete"].Value = Resources.delete;
                     dgvProduct.Rows[index].Cells["ColId"].Value = storage["id"].ToString();
-                    dgvProduct.Rows[index].Cells["ColDateEntry"].Value = storage["date"].ToString();
-                    dgvProduct.Rows[index].Cells["ColQuantityStock"].Value = storage["stock"].ToString();
-                    dgvProduct.Rows[index].Cells["ColQuantityExit"].Value = storage["total_exit"].ToString() == "" ? "0" : storage["total_exit"].ToString();
-                    dgvProduct.Rows[index].Cells["ColBalance"].Value = storage["balance"].ToString() == "" ? "0" : storage["balance"].ToString();
+                    dgvProduct.Rows[index].Cells["ColName"].Value = storage["name"].ToString();
                     dgvProduct.Rows[index].Height = 45;
                 }
+
+                UpdateProductDescription();
             }
             catch (Exception)
             {
                 MessageBox.Show("Houve um erro no sistema. Tente novamente", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void UpdateProductDescription()
+        {
+            lblDescriptionRow.Text = $"Exibindo {dgvProduct.Rows.Count} de {PageData.quantity} produto(s) cadastrado(s)";
         }
 
         private void UpdateComboBoxItems()
@@ -165,20 +167,18 @@ namespace Interface
 
         private void FrmProducts_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-                btnAdd.PerformClick();
-            else if (e.KeyCode == Keys.Escape)
-                btnCancel.PerformClick();
+            if (e.Control && e.KeyCode == Keys.N)
+                btnNewProduct_Click(sender, e);
             else if (e.Control && e.KeyCode == Keys.Right && btnArrowRight.Enabled) btnArrowRight_Click(sender, e);
             else if (e.Control && e.KeyCode == Keys.Left && btnArrowLeft.Enabled) btnArrowLeft_Click(sender, e);
-
         }
 
         private void LoadEvents()
         {
             CheckNumberOfPages(int.Parse(cbRows.Text));
             UpdateComboBoxItems();
-            LoadStorages();
+            LoadProducts();
+            UpdateProductDescription();
         }
 
         private void cbRows_SelectedIndexChanged(object sender, EventArgs e)
@@ -196,7 +196,7 @@ namespace Interface
             page = int.Parse(cbPage.Text);
             if (pageMaximum == 1) return;
 
-            LoadStorages();
+            LoadProducts();
 
             if (page == 1)
             {
@@ -222,91 +222,36 @@ namespace Interface
             dgvProduct.Cursor = e.ColumnIndex == 0 || e.ColumnIndex == 1 || e.ColumnIndex == 2 ? Cursors.Hand : Cursors.Arrow;
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            try 
-            {
-                if (!ValidationFields(quantityRegistered, quantityExit)) return;
-                
-                new Storage
-                {
-                    id = idStorage,
-                    dateStorage = dtDateEntry.Value.ToString("yyyy-MM-dd"),
-                    stock = double.Parse(ndQuantityStock.Value.ToString().Replace(",", ".")),
-                    productId = idProduct
-                }.Save();
-
-                LoadEvents();
-                Clear();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Houve um erro no sistema. Tente novamente", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            Clear();
-        }
-
-        private bool ValidationFields(double quantityStock, double quantityExit)
-        {
-            bool isValid = false;
-
-            if (idStorage > 0)
-            {
-                if (Convert.ToDouble(ndQuantityStock.Value) < quantityExit)
-                    MessageBox.Show("A quantidade da entrada inicial não pode ser menor que a quantidade que saíram do estoque", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            
-            if (dtDateEntry.Enabled && Storage.CheckStockAvailability(idProduct, $"{dtDateEntry.Value.Year}-{dtDateEntry.Value.Month.ToString().PadLeft(2, '0')}-{dtDateEntry.Value.Day.ToString().PadLeft(2, '0')}"))
-                MessageBox.Show("Já existe uma entrada de estoque para este produto na data selecionada. Verifique a lista de entradas de estoque.", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            else
-                isValid = true;
-
-            return isValid;
-        }
-
         private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
             bool isConfirmed = false;
 
             if (e.RowIndex == -1) return;
 
             int id = Convert.ToInt32(dgvProduct.CurrentRow.Cells["ColId"].Value);
-            
+            string name = dgvProduct.CurrentRow.Cells["ColName"].Value.ToString();
+
             if (dgvProduct.CurrentCell.ColumnIndex == 0)
             {
-                FrmDeparture frmDeparture = new FrmDeparture(Convert.ToInt32(dgvProduct.CurrentRow.Cells["ColId"].Value), lblNameProduct.Text.ToString(), Convert.ToInt32(dgvProduct.CurrentRow.Cells["ColQuantityStock"].Value), Convert.ToDateTime(dgvProduct.CurrentRow.Cells["ColDateEntry"].Value)); 
-                frmDeparture.ShowDialog();
-                if(frmDeparture.isSaved)
-                {
-                    LoadEvents();
-                }
+                new FrmStorage(id, name).ShowDialog();
             }
             else if (dgvProduct.CurrentCell.ColumnIndex == 1)
             {
-                idStorage = id;
-                dtDateEntry.Enabled = false;
-                dtDateEntry.Value = Convert.ToDateTime(dgvProduct.CurrentRow.Cells["ColDateEntry"].Value);
-                ndQuantityStock.Value = Convert.ToDecimal(dgvProduct.CurrentRow.Cells["ColQuantityStock"].Value);
-                quantityExit = Convert.ToInt32(dgvProduct.CurrentRow.Cells["ColQuantityExit"].Value);
-                quantityRegistered = Convert.ToInt32(ndQuantityStock.Value);
-                btnAdd.Image = Resources.icons8_crie_um_novo_32;
-                btnAdd.Text = "Atualizar";
-                btnCancel.Visible = true;
+
+                FrmSaveProduct frmProduct = new FrmSaveProduct(id, name);
+                frmProduct.ShowDialog();
+                if (frmProduct.isSaved)
+                    isConfirmed = true;
             }
             else if (dgvProduct.CurrentCell.ColumnIndex == 2)
             {
-                DialogResult dr = MessageBox.Show($"Deseja mesmo excluir?", "Controle do almoxarifado", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                DialogResult dr = MessageBox.Show($"Deseja mesmo excluir o produto {name} do sistema?", "Controle do almoxarifado", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
                 if (dr == DialogResult.Yes)
                 {
                     try
                     {
-                        Storage.Delete(id);
+                        Product.Delete(id);
                         isConfirmed = true;
                     }
                     catch (Exception)
@@ -316,22 +261,7 @@ namespace Interface
                 }
             }
 
-            if (isConfirmed)
-            {
-                LoadEvents();
-                Clear();
-            }
-        }
-
-        private void Clear()
-        {
-            idStorage = 0;
-            dtDateEntry.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-            ndQuantityStock.Value = 1;
-            btnAdd.Image = Resources.icons8_plus_key_32;
-            btnAdd.Text = "Adicionar";
-            btnCancel.Visible = false;
-            dtDateEntry.Enabled = true;
+            if (isConfirmed) LoadEvents();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)

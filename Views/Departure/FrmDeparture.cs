@@ -11,13 +11,14 @@ namespace Interface
         int page = 1, pageMaximum = 1, idDeparture, idStorage, quantityRegistered, quantityExit;
         public bool isSaved = false;
 
-        public FrmDeparture(int idStorage, string nameProduct, int quantityRegistered)
+        public FrmDeparture(int idStorage, string nameProduct, int quantityRegistered, DateTime dateEntry)
         {
             InitializeComponent();
             lblNameProduct.Text = nameProduct;
             this.idStorage = idStorage;
             lblQuantityRegistered.Text =  quantityRegistered.ToString();
             this.quantityRegistered = quantityRegistered;
+            lblDateEntry.Text = dateEntry.ToString("dd/MM/yyyy");    
         }
 
         private void btnArrowLeft_Click(object sender, EventArgs e)
@@ -235,6 +236,10 @@ namespace Interface
             {
                 MessageBox.Show("Descreva no campo 'Descrição' o motivo da saída", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            else if(dtDateExit.Value < Convert.ToDateTime(lblDateEntry.Text))
+            {
+                MessageBox.Show("A data de saída não pode ser menor que a data de entrada", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             else if (totalExit > quantityRegistered)
             {
                 MessageBox.Show(
@@ -244,7 +249,7 @@ namespace Interface
                     MessageBoxIcon.Warning
                 );
             }
-            else 
+            else
                 isValid = true;
 
 
