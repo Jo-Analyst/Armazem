@@ -226,10 +226,8 @@ namespace Interface
         {
             try 
             {
-
-                if (idStorage > 0)
-                    if(!ValidationFields(quantityRegistered, quantityExit)) return;
-
+                if (!ValidationFields(quantityRegistered, quantityExit)) return;
+                
                 new Storage
                 {
                     id = idStorage,
@@ -256,14 +254,17 @@ namespace Interface
         {
             bool isValid = false;
 
-            if (Convert.ToDouble(ndQuantityStock.Value) < quantityExit)
+            if (idStorage > 0)
             {
-
-                MessageBox.Show("A quantidade da entrada inicial não pode ser menor que a quantidade que saíram do estoque", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (Convert.ToDouble(ndQuantityStock.Value) < quantityExit)
+                    MessageBox.Show("A quantidade da entrada inicial não pode ser menor que a quantidade que saíram do estoque", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else                 
-                isValid = true;
             
+            if (dtDateEntry.Enabled && Storage.CheckStockAvailability(idProduct, $"{dtDateEntry.Value.Year}-{dtDateEntry.Value.Month.ToString().PadLeft(2, '0')}-{dtDateEntry.Value.Day.ToString().PadLeft(2, '0')}"))
+                MessageBox.Show("Já existe uma entrada de estoque para este produto na data selecionada. Verifique a lista de entradas de estoque.", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+                isValid = true;
+
             return isValid;
         }
 
@@ -288,6 +289,7 @@ namespace Interface
             else if (dgvProduct.CurrentCell.ColumnIndex == 1)
             {
                 idStorage = id;
+                dtDateEntry.Enabled = false;
                 dtDateEntry.Value = Convert.ToDateTime(dgvProduct.CurrentRow.Cells["ColDateEntry"].Value);
                 ndQuantityStock.Value = Convert.ToDecimal(dgvProduct.CurrentRow.Cells["ColQuantityStock"].Value);
                 quantityExit = Convert.ToInt32(dgvProduct.CurrentRow.Cells["ColQuantityExit"].Value);
@@ -329,6 +331,7 @@ namespace Interface
             btnAdd.Image = Resources.icons8_plus_key_32;
             btnAdd.Text = "Adicionar";
             btnCancel.Visible = false;
+            dtDateEntry.Enabled = true;
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)

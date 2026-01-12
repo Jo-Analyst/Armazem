@@ -85,5 +85,26 @@ namespace DataBase
                 throw ex;
             }
         }
+
+        static public bool CheckStockAvailability(int productId, string dateStorage)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(ConnString.connectionChain))
+                {
+                    conn.Open();
+                    string sql = $"SELECT * FROM storages WHERE date_storage = '{dateStorage}'  AND  product_id = {productId}";
+                    MySqlDataAdapter cmd = new MySqlDataAdapter(sql, conn);
+                    DataTable dataTable = new DataTable();
+                    cmd.Fill(dataTable);
+
+                    return dataTable.Rows.Count > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
