@@ -128,9 +128,9 @@ namespace Interface
                     dgvReport.Rows[index].Cells["ColName"].Value = storage["name"].ToString();
                     dgvReport.Rows[index].Cells["ColDateEntry"].Value = storage["date_storage"].ToString();
                     dgvReport.Rows[index].Cells["ColStock"].Value = storage["stock"].ToString();
-                    dgvReport.Rows[index].Cells["ColQuantityExit"].Value = storage["quantity_exit"].ToString();
-                    dgvReport.Rows[index].Cells["ColDescription"].Value = storage["description"].ToString();
-                    dgvReport.Rows[index].Cells["ColDateExit"].Value = storage["date_exit"].ToString();
+                    dgvReport.Rows[index].Cells["ColQuantityExit"].Value = storage["quantity_exit"].ToString() != ""  ? storage["quantity_exit"].ToString() : "---";
+                    dgvReport.Rows[index].Cells["ColDescription"].Value = storage["description"].ToString() != string.Empty ? storage["description"].ToString() : "---";
+                    dgvReport.Rows[index].Cells["ColDateExit"].Value = storage["date_exit"].ToString() != string.Empty ? storage["date_exit"].ToString() : "---";
                     dgvReport.Rows[index].Height = 45;
                     dgvReport.Rows[index].Selected = false;
                 }              

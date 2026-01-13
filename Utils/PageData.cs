@@ -19,8 +19,7 @@ namespace Interface
 
         static public int SetPageQuantityRowsReport(string name, string dateEntry)
         {
-            quantity = Report.CountQuantityRows(name, dateEntry);
-            MessageBox.Show(quantity.ToString());
+            quantity = Report.CountQuantityRows(name, dateEntry);            
             return CalculateNumberOfPage();
         }
 
