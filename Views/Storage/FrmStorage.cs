@@ -2,7 +2,6 @@
 using Interface.Properties;
 using System;
 using System.Data;
-using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms;
 
 namespace Interface
@@ -130,7 +129,7 @@ namespace Interface
                 int quantRows = int.Parse(cbRows.Text);
                 int pageSelected = (page - 1) * quantRows;
 
-                DataTable dtStorages =  Storage.FindByProductId(idProduct, pageSelected, quantRows);
+                DataTable dtStorages = Storage.FindByProductId(idProduct, pageSelected, quantRows);
 
                 foreach (DataRow storage in dtStorages.Rows)
                 {
@@ -224,10 +223,10 @@ namespace Interface
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            try 
+            try
             {
                 if (!ValidationFields(quantityRegistered, quantityExit)) return;
-                
+
                 new Storage
                 {
                     id = idStorage,
@@ -259,7 +258,7 @@ namespace Interface
                 if (Convert.ToDouble(ndQuantityStock.Value) < quantityExit)
                     MessageBox.Show("A quantidade da entrada inicial não pode ser menor que a quantidade que saíram do estoque", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
+
             if (dtDateEntry.Enabled && Storage.CheckStockAvailability(idProduct, $"{dtDateEntry.Value.Year}-{dtDateEntry.Value.Month.ToString().PadLeft(2, '0')}-{dtDateEntry.Value.Day.ToString().PadLeft(2, '0')}"))
                 MessageBox.Show("Já existe uma entrada de estoque para este produto na data selecionada. Verifique a lista de entradas de estoque.", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
@@ -276,12 +275,12 @@ namespace Interface
             if (e.RowIndex == -1) return;
 
             int id = Convert.ToInt32(dgvProduct.CurrentRow.Cells["ColId"].Value);
-            
+
             if (dgvProduct.CurrentCell.ColumnIndex == 0)
             {
-                FrmDeparture frmDeparture = new FrmDeparture(Convert.ToInt32(dgvProduct.CurrentRow.Cells["ColId"].Value), lblNameProduct.Text.ToString(), Convert.ToInt32(dgvProduct.CurrentRow.Cells["ColQuantityStock"].Value), Convert.ToDateTime(dgvProduct.CurrentRow.Cells["ColDateEntry"].Value)); 
+                FrmDeparture frmDeparture = new FrmDeparture(Convert.ToInt32(dgvProduct.CurrentRow.Cells["ColId"].Value), lblNameProduct.Text.ToString(), Convert.ToInt32(dgvProduct.CurrentRow.Cells["ColQuantityStock"].Value), Convert.ToDateTime(dgvProduct.CurrentRow.Cells["ColDateEntry"].Value));
                 frmDeparture.ShowDialog();
-                if(frmDeparture.isSaved)
+                if (frmDeparture.isSaved)
                 {
                     LoadEvents();
                 }

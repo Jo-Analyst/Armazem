@@ -16,9 +16,9 @@ namespace Interface
             InitializeComponent();
             lblNameProduct.Text = nameProduct;
             this.idStorage = idStorage;
-            lblQuantityRegistered.Text =  quantityRegistered.ToString();
+            lblQuantityRegistered.Text = quantityRegistered.ToString();
             this.quantityRegistered = quantityRegistered;
-            lblDateEntry.Text = dateEntry.ToString("dd/MM/yyyy");    
+            lblDateEntry.Text = dateEntry.ToString("dd/MM/yyyy");
         }
 
         private void btnArrowLeft_Click(object sender, EventArgs e)
@@ -122,7 +122,7 @@ namespace Interface
                 int quantRows = int.Parse(cbRows.Text);
                 int pageSelected = (page - 1) * quantRows;
 
-                DataTable dtDeparture =  Departure.FindByStorageId(idStorage, pageSelected, quantRows);
+                DataTable dtDeparture = Departure.FindByStorageId(idStorage, pageSelected, quantRows);
 
                 foreach (DataRow storage in dtDeparture.Rows)
                 {
@@ -236,7 +236,7 @@ namespace Interface
             {
                 MessageBox.Show("Descreva no campo 'Descrição' o motivo da saída", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if(dtDateExit.Value < Convert.ToDateTime(lblDateEntry.Text))
+            else if (dtDateExit.Value < Convert.ToDateTime(lblDateEntry.Text))
             {
                 MessageBox.Show("A data de saída não pode ser menor que a data de entrada", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -287,7 +287,7 @@ namespace Interface
             if (e.RowIndex == -1) return;
 
             int id = Convert.ToInt32(dgvDeparture.CurrentRow.Cells["ColId"].Value);
-            
+
             if (dgvDeparture.CurrentCell.ColumnIndex == 0)
             {
                 idDeparture = id;
@@ -296,7 +296,7 @@ namespace Interface
                 quantityExit = Convert.ToInt32(dgvDeparture.CurrentRow.Cells["ColQuantityExit"].Value);
                 rtDescription.Text = dgvDeparture.CurrentRow.Cells["ColDescription"].Value.ToString();
                 btnRegisterExit.Image = Resources.icons8_crie_um_novo_32;
-                 btnRegisterExit.Text = "Atualizar";
+                btnRegisterExit.Text = "Atualizar";
                 btnCancel.Visible = true;
             }
             else if (dgvDeparture.CurrentCell.ColumnIndex == 1)
@@ -309,7 +309,7 @@ namespace Interface
                     {
                         Departure.Delete(id);
                         isConfirmed = true;
-                       
+
                     }
                     catch (Exception)
                     {
@@ -331,8 +331,8 @@ namespace Interface
             dtDateExit.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
             rtDescription.Clear();
             ndQuantityExit.Value = 1;
-             btnRegisterExit.Image = Resources.icons8_plus_key_32;
-             btnRegisterExit.Text = "Adicionar";
+            btnRegisterExit.Image = Resources.icons8_plus_key_32;
+            btnRegisterExit.Text = "Adicionar";
             btnCancel.Visible = false;
         }
 

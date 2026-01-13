@@ -1,5 +1,6 @@
 ﻿using DataBase;
 using System;
+using System.Windows.Forms;
 
 namespace Interface
 {
@@ -16,12 +17,19 @@ namespace Interface
         }
 
 
+        static public int SetPageQuantityRowsReport(string name, string dateEntry)
+        {
+            quantity = Report.CountQuantityRows(name, dateEntry);
+            MessageBox.Show(quantity.ToString());
+            return CalculateNumberOfPage();
+        }
+
         static public int SetPageQuantityStorages(int productId)
         {
             quantity = Storage.CountQuantityStorages(productId);
             return CalculateNumberOfPage();
         }
-        
+
         static public int SetPageQuantityDepartures(int storageId)
         {
             quantity = Departure.CountQuantityDepartures(storageId);

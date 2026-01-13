@@ -10,22 +10,13 @@ namespace Interface
     {
 
         int page = 1, pageMaximum = 1;
+        string name, dateEntry;
 
         public FrmReport()
         {
             InitializeComponent();
         }
 
-
-        private void btnNewProduct_Click(object sender, EventArgs e)
-        {
-            FrmSaveProduct frmSaveProduct = new FrmSaveProduct();
-            frmSaveProduct.ShowDialog();
-            if (frmSaveProduct.isSaved)
-            {
-                LoadEvents();
-            }
-        }
 
         private void btnArrowLeft_Click(object sender, EventArgs e)
         {
@@ -45,7 +36,8 @@ namespace Interface
             {
                 EnabledBtnArrowLeft();
             }
-            LoadProducts();
+            
+            LoadReport();
         }
 
         private void btnArrowRight_Click(object sender, EventArgs e)
@@ -72,7 +64,7 @@ namespace Interface
             }
 
             EnabledBtnArrowLeft();
-            LoadProducts();
+            LoadReport();
         }
 
         private void DisabledBtnArrowLeft()
@@ -99,59 +91,54 @@ namespace Interface
             btnArrowRight.Image = Resources.right_arrow_white;
         }
 
-        private void FrmProducts_Load(object sender, EventArgs e)
+        private void FrmReport_Load(object sender, EventArgs e)
         {
             cbPage.Text = "1";
             cbRows.Text = "10";
             LoadEvents();
             this.cbRows.SelectedIndexChanged += cbRows_SelectedIndexChanged;
             this.cbPage.SelectedIndexChanged += new System.EventHandler(this.cbPage_SelectedIndexChanged);
+            this.dtDateEntry.ValueChanged += new System.EventHandler(this.dtDateEntry_ValueChanged);
         }
 
         private void CheckNumberOfPages(int numberRows)
         {
             PageData.quantityRowsSelected = numberRows;
-            pageMaximum = string.IsNullOrWhiteSpace(txtName.Text) ? PageData.SetPageQuantityProducts() : PageData.SetPageQuantityProductsByName(txtName.Text);
-
+            pageMaximum = PageData.SetPageQuantityRowsReport(name, dateEntry);
+           
             if (pageMaximum > 1)
                 EnabledBtnArrowRight();
 
         }
 
-        private void LoadProducts()
+        private void LoadReport()
         {
             try
             {
-                dgvProduct.Rows.Clear();
+                dgvReport.Rows.Clear();
 
                 int quantRows = int.Parse(cbRows.Text);
-                int pageSelected = (page - 1) * quantRows;
+                int pageSelected = (page - 1) * quantRows;              
 
-                DataTable dtProducts = string.IsNullOrWhiteSpace(txtName.Text) ? Product.FindAll(pageSelected, quantRows)
-                    : Product.FindByName(txtName.Text.Trim(), pageSelected, quantRows);
+                DataTable dtReport = Report.GetReport(name, dateEntry, pageSelected, quantRows);
 
-                foreach (DataRow storage in dtProducts.Rows)
+                foreach (DataRow storage in dtReport.Rows)
                 {
-                    int index = dgvProduct.Rows.Add();
-                    dgvProduct.Rows[index].Cells["ColADD"].Value = Resources.add_post;
-                    dgvProduct.Rows[index].Cells["ColEdit"].Value = Resources.edit;
-                    dgvProduct.Rows[index].Cells["ColDelete"].Value = Resources.delete;
-                    dgvProduct.Rows[index].Cells["ColId"].Value = storage["id"].ToString();
-                    dgvProduct.Rows[index].Cells["ColName"].Value = storage["name"].ToString();
-                    dgvProduct.Rows[index].Height = 45;
-                }
-
-                UpdateProductDescription();
+                    int index = dgvReport.Rows.Add();
+                    dgvReport.Rows[index].Cells["ColName"].Value = storage["name"].ToString();
+                    dgvReport.Rows[index].Cells["ColDateEntry"].Value = storage["date_storage"].ToString();
+                    dgvReport.Rows[index].Cells["ColStock"].Value = storage["stock"].ToString();
+                    dgvReport.Rows[index].Cells["ColQuantityExit"].Value = storage["quantity_exit"].ToString();
+                    dgvReport.Rows[index].Cells["ColDescription"].Value = storage["description"].ToString();
+                    dgvReport.Rows[index].Cells["ColDateExit"].Value = storage["date_exit"].ToString();
+                    dgvReport.Rows[index].Height = 45;
+                    dgvReport.Rows[index].Selected = false;
+                }              
             }
             catch (Exception)
             {
                 MessageBox.Show("Houve um erro no sistema. Tente novamente", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void UpdateProductDescription()
-        {
-            lblDescriptionRow.Text = $"Exibindo {dgvProduct.Rows.Count} de {PageData.quantity} produto(s) cadastrado(s)";
         }
 
         private void UpdateComboBoxItems()
@@ -167,18 +154,17 @@ namespace Interface
 
         private void FrmProducts_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.N)
-                btnNewProduct_Click(sender, e);
-            else if (e.Control && e.KeyCode == Keys.Right && btnArrowRight.Enabled) btnArrowRight_Click(sender, e);
+            if (e.Control && e.KeyCode == Keys.Right && btnArrowRight.Enabled) btnArrowRight_Click(sender, e);
             else if (e.Control && e.KeyCode == Keys.Left && btnArrowLeft.Enabled) btnArrowLeft_Click(sender, e);
         }
 
         private void LoadEvents()
         {
+            dateEntry = cbDateEntry.Checked ? dtDateEntry.Value.ToString("yyyy-MM-dd") : null;
+            name = cbName.Checked ? txtName.Text.Trim() : null;
             CheckNumberOfPages(int.Parse(cbRows.Text));
             UpdateComboBoxItems();
-            LoadProducts();
-            UpdateProductDescription();
+            LoadReport();
         }
 
         private void cbRows_SelectedIndexChanged(object sender, EventArgs e)
@@ -196,7 +182,7 @@ namespace Interface
             page = int.Parse(cbPage.Text);
             if (pageMaximum == 1) return;
 
-            LoadProducts();
+            LoadReport();
 
             if (page == 1)
             {
@@ -217,54 +203,48 @@ namespace Interface
 
         }
 
-        private void dgvProducts_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        private void cbName_CheckedChanged(object sender, EventArgs e)
         {
-            dgvProduct.Cursor = e.ColumnIndex == 0 || e.ColumnIndex == 1 || e.ColumnIndex == 2 ? Cursors.Hand : Cursors.Arrow;
+            txtName.Enabled = cbName.Checked == true;
+            txtName.Focus();
+            LoadEvents();
+         
+            if (!cbName.Checked)
+            {
+                txtName.Clear();
+                name = null;
+            }
         }
 
-        private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void cbDateEntry_CheckedChanged(object sender, EventArgs e)
         {
-            bool isConfirmed = false;
+            dtDateEntry.Enabled = cbDateEntry.Checked == true;
+            LoadEvents();
 
-            if (e.RowIndex == -1) return;
-
-            int id = Convert.ToInt32(dgvProduct.CurrentRow.Cells["ColId"].Value);
-            string name = dgvProduct.CurrentRow.Cells["ColName"].Value.ToString();
-
-            if (dgvProduct.CurrentCell.ColumnIndex == 0)
+            if (pageMaximum == 1)
             {
-                new FrmStorage(id, name).ShowDialog();
-            }
-            else if (dgvProduct.CurrentCell.ColumnIndex == 1)
-            {
-
-                FrmSaveProduct frmProduct = new FrmSaveProduct(id, name);
-                frmProduct.ShowDialog();
-                if (frmProduct.isSaved)
-                    isConfirmed = true;
-            }
-            else if (dgvProduct.CurrentCell.ColumnIndex == 2)
-            {
-                DialogResult dr = MessageBox.Show($"Deseja mesmo excluir o produto {name} do sistema?", "Controle do almoxarifado", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-
-                if (dr == DialogResult.Yes)
-                {
-                    try
-                    {
-                        Product.Delete(id);
-                        isConfirmed = true;
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Houve um erro no sistema. Tente novamente", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
+                DisabledBtnArrowLeft();
+                DisabledBtnArrowRight();
             }
 
-            if (isConfirmed) LoadEvents();
+            if (!cbDateEntry.Checked)
+            {
+                dateEntry = null;
+            }
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            LoadEvents();
+            
+            if (pageMaximum == 1)
+            {
+                DisabledBtnArrowLeft();
+                DisabledBtnArrowRight();
+            }
+        }
+
+        private void dtDateEntry_ValueChanged(object sender, EventArgs e)
         {
             LoadEvents();
             if (pageMaximum == 1)
@@ -273,5 +253,10 @@ namespace Interface
                 DisabledBtnArrowRight();
             }
         }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+
+        }       
     }
 }

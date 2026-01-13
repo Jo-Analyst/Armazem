@@ -26,7 +26,7 @@ namespace Interface
         {
             try
             {
-                if(string.IsNullOrWhiteSpace(txtName.Text))
+                if (string.IsNullOrWhiteSpace(txtName.Text))
                 {
                     MessageBox.Show("O nome do produto é obrigatório", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtName.Focus();
@@ -51,7 +51,7 @@ namespace Interface
 
         private void FrmSaveProduct_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 btnSalvar.PerformClick();
             }
