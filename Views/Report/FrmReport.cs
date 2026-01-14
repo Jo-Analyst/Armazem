@@ -1,5 +1,6 @@
 ﻿using DataBase;
 using Interface.Properties;
+using Interface.Views.Report;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -256,7 +257,7 @@ namespace Interface
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-
+            new FrmReportPrint().ShowDialog();
         }       
     }
 }
