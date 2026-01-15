@@ -16,9 +16,15 @@ namespace Interface
         }
 
 
-        static public int SetPageQuantityRowsReport(string name, string dateEntry)
+        static public int SetPageQuantityRowsReportCompleted(string name, string dateEntry)
         {
-            quantity = Report.CountQuantityRows(name, dateEntry);
+            quantity = ReportCompleted.CountQuantityRows(name, dateEntry);
+            return CalculateNumberOfPage();
+        }
+        
+        static public int SetPageQuantityRowsDetailedReport(string name, string dateEntry)
+        {
+            quantity = DetailedReport.GetReport(name, dateEntry).Rows.Count;
             return CalculateNumberOfPage();
         }
 

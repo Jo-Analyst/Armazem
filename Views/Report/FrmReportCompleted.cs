@@ -7,13 +7,13 @@ using System.Windows.Forms;
 
 namespace Interface
 {
-    public partial class FrmReport : Form
+    public partial class FrmReportCompleted : Form
     {
 
         int page = 1, pageMaximum = 1;
         string name, dateEntry;
 
-        public FrmReport()
+        public FrmReportCompleted()
         {
             InitializeComponent();
         }
@@ -105,7 +105,7 @@ namespace Interface
         private void CheckNumberOfPages(int numberRows)
         {
             PageData.quantityRowsSelected = numberRows;
-            pageMaximum = PageData.SetPageQuantityRowsReport(name, dateEntry);
+            pageMaximum = PageData.SetPageQuantityRowsReportCompleted(name, dateEntry);
 
             if (pageMaximum > 1)
                 EnabledBtnArrowRight();
@@ -121,7 +121,7 @@ namespace Interface
                 int quantRows = int.Parse(cbRows.Text);
                 int pageSelected = (page - 1) * quantRows;
 
-                DataTable dtReport = Report.GetReport(name, dateEntry, pageSelected, quantRows);
+                DataTable dtReport = ReportCompleted.GetReport(name, dateEntry, pageSelected, quantRows);
 
                 foreach (DataRow storage in dtReport.Rows)
                 {
@@ -260,7 +260,7 @@ namespace Interface
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            DataTable report = Report.GetReportCompleted(name, dateEntry);
+            DataTable report = ReportCompleted.GetReportCompleted(name, dateEntry);
             DataTable reportClone = new DataTable();
             reportClone.Columns.Add("name", typeof(string));
             reportClone.Columns.Add("date_storage", typeof(string));

@@ -1,6 +1,6 @@
 ﻿namespace Interface
 {
-    partial class FrmReport
+    partial class FrmDetailedReport
     {
         /// <summary>
         /// Required designer variable.
@@ -32,14 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReport));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDetailedReport));
             this.dgvReport = new System.Windows.Forms.DataGridView();
-            this.ColDateEntry = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDateExit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColQuantityExit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.cbRows = new System.Windows.Forms.ComboBox();
@@ -50,13 +44,18 @@
             this.btnArrowLeft = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.btnPrint = new System.Windows.Forms.Button();
             this.dtDateEntry = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbDateEntry = new System.Windows.Forms.CheckBox();
             this.cbName = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnPrint = new System.Windows.Forms.Button();
+            this.ColDateEntry = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColTotalExit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -88,9 +87,8 @@
             this.ColDateEntry,
             this.ColStock,
             this.ColName,
-            this.ColDateExit,
-            this.ColDescription,
-            this.ColQuantityExit});
+            this.ColTotalExit,
+            this.ColBalance});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -118,64 +116,6 @@
             this.dgvReport.Size = new System.Drawing.Size(935, 244);
             this.dgvReport.TabIndex = 2;
             this.dgvReport.TabStop = false;
-            // 
-            // ColDateEntry
-            // 
-            this.ColDateEntry.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColDateEntry.HeaderText = "Data de Entrada";
-            this.ColDateEntry.MinimumWidth = 6;
-            this.ColDateEntry.Name = "ColDateEntry";
-            this.ColDateEntry.ReadOnly = true;
-            this.ColDateEntry.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColDateEntry.Width = 129;
-            // 
-            // ColStock
-            // 
-            this.ColStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColStock.HeaderText = "Quant no estoque";
-            this.ColStock.MinimumWidth = 6;
-            this.ColStock.Name = "ColStock";
-            this.ColStock.ReadOnly = true;
-            this.ColStock.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColStock.Width = 136;
-            // 
-            // ColName
-            // 
-            this.ColName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColName.HeaderText = "Nome";
-            this.ColName.MinimumWidth = 6;
-            this.ColName.Name = "ColName";
-            this.ColName.ReadOnly = true;
-            this.ColName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColDateExit
-            // 
-            this.ColDateExit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColDateExit.HeaderText = "Data de Saída";
-            this.ColDateExit.MinimumWidth = 6;
-            this.ColDateExit.Name = "ColDateExit";
-            this.ColDateExit.ReadOnly = true;
-            this.ColDateExit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColDateExit.Width = 115;
-            // 
-            // ColDescription
-            // 
-            this.ColDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColDescription.HeaderText = "Descrição";
-            this.ColDescription.MinimumWidth = 6;
-            this.ColDescription.Name = "ColDescription";
-            this.ColDescription.ReadOnly = true;
-            this.ColDescription.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColQuantityExit
-            // 
-            this.ColQuantityExit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColQuantityExit.HeaderText = "Quant. Saída";
-            this.ColQuantityExit.MinimumWidth = 6;
-            this.ColQuantityExit.Name = "ColQuantityExit";
-            this.ColQuantityExit.ReadOnly = true;
-            this.ColQuantityExit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColQuantityExit.Width = 104;
             // 
             // panel1
             // 
@@ -219,7 +159,7 @@
             "25"});
             this.cbRows.Location = new System.Drawing.Point(67, 11);
             this.cbRows.Name = "cbRows";
-            this.cbRows.Size = new System.Drawing.Size(94, 26);
+            this.cbRows.Size = new System.Drawing.Size(94, 31);
             this.cbRows.TabIndex = 16;
             this.cbRows.TabStop = false;
             // 
@@ -233,11 +173,11 @@
             this.cbPage.ForeColor = System.Drawing.Color.White;
             this.cbPage.FormattingEnabled = true;
             this.cbPage.IntegralHeight = false;
-            this.cbPage.ItemHeight = 18;
+            this.cbPage.ItemHeight = 23;
             this.cbPage.Location = new System.Drawing.Point(759, 11);
             this.cbPage.Margin = new System.Windows.Forms.Padding(19, 17, 19, 17);
             this.cbPage.Name = "cbPage";
-            this.cbPage.Size = new System.Drawing.Size(97, 26);
+            this.cbPage.Size = new System.Drawing.Size(97, 31);
             this.cbPage.TabIndex = 15;
             this.cbPage.TabStop = false;
             // 
@@ -248,7 +188,7 @@
             this.label2.Location = new System.Drawing.Point(690, 14);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 18);
+            this.label2.Size = new System.Drawing.Size(70, 23);
             this.label2.TabIndex = 14;
             this.label2.Text = "Página";
             // 
@@ -259,7 +199,7 @@
             this.label1.Location = new System.Drawing.Point(12, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 18);
+            this.label1.Size = new System.Drawing.Size(58, 23);
             this.label1.TabIndex = 11;
             this.label1.Text = "Exibir";
             // 
@@ -307,9 +247,25 @@
             this.txtName.Location = new System.Drawing.Point(36, 129);
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(521, 26);
+            this.txtName.Size = new System.Drawing.Size(521, 30);
             this.txtName.TabIndex = 4;
             this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrint.Enabled = false;
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
+            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrint.Location = new System.Drawing.Point(749, 110);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(215, 66);
+            this.btnPrint.TabIndex = 11;
+            this.btnPrint.Text = "Visualizar";
+            this.toolTip.SetToolTip(this.btnPrint, "Visualizar relatório - [CTRL + ALT  + P]");
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // dtDateEntry
             // 
@@ -318,7 +274,7 @@
             this.dtDateEntry.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtDateEntry.Location = new System.Drawing.Point(577, 129);
             this.dtDateEntry.Name = "dtDateEntry";
-            this.dtDateEntry.Size = new System.Drawing.Size(151, 26);
+            this.dtDateEntry.Size = new System.Drawing.Size(151, 30);
             this.dtDateEntry.TabIndex = 9;
             // 
             // groupBox1
@@ -340,7 +296,7 @@
             this.cbDateEntry.AutoSize = true;
             this.cbDateEntry.Location = new System.Drawing.Point(177, 42);
             this.cbDateEntry.Name = "cbDateEntry";
-            this.cbDateEntry.Size = new System.Drawing.Size(142, 22);
+            this.cbDateEntry.Size = new System.Drawing.Size(177, 27);
             this.cbDateEntry.TabIndex = 18;
             this.cbDateEntry.Text = "Data de Entrada";
             this.cbDateEntry.UseVisualStyleBackColor = true;
@@ -351,7 +307,7 @@
             this.cbName.AutoSize = true;
             this.cbName.Location = new System.Drawing.Point(14, 42);
             this.cbName.Name = "cbName";
-            this.cbName.Size = new System.Drawing.Size(148, 22);
+            this.cbName.Size = new System.Drawing.Size(184, 27);
             this.cbName.TabIndex = 17;
             this.cbName.Text = "Nome do produto";
             this.cbName.UseVisualStyleBackColor = true;
@@ -370,29 +326,62 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 18);
+            this.label3.Size = new System.Drawing.Size(106, 23);
             this.label3.TabIndex = 0;
             this.label3.Text = "Buscar por";
             // 
-            // btnPrint
+            // ColDateEntry
             // 
-            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrint.Enabled = false;
-            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
-            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(749, 110);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(215, 66);
-            this.btnPrint.TabIndex = 11;
-            this.btnPrint.Text = "Visualizar";
-            this.toolTip.SetToolTip(this.btnPrint, "Visualizar relatório - [CTRL + ALT  + P]");
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            this.ColDateEntry.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColDateEntry.HeaderText = "Data de Entrada";
+            this.ColDateEntry.MinimumWidth = 6;
+            this.ColDateEntry.Name = "ColDateEntry";
+            this.ColDateEntry.ReadOnly = true;
+            this.ColDateEntry.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColDateEntry.Width = 161;
             // 
-            // FrmReport
+            // ColStock
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.ColStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColStock.HeaderText = "Quant no estoque";
+            this.ColStock.MinimumWidth = 6;
+            this.ColStock.Name = "ColStock";
+            this.ColStock.ReadOnly = true;
+            this.ColStock.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColStock.Width = 172;
+            // 
+            // ColName
+            // 
+            this.ColName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColName.HeaderText = "Nome";
+            this.ColName.MinimumWidth = 6;
+            this.ColName.Name = "ColName";
+            this.ColName.ReadOnly = true;
+            this.ColName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColTotalExit
+            // 
+            this.ColTotalExit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColTotalExit.HeaderText = "Quant. Saída";
+            this.ColTotalExit.MinimumWidth = 6;
+            this.ColTotalExit.Name = "ColTotalExit";
+            this.ColTotalExit.ReadOnly = true;
+            this.ColTotalExit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColTotalExit.Width = 133;
+            // 
+            // ColBalance
+            // 
+            this.ColBalance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColBalance.HeaderText = "Saldo";
+            this.ColBalance.MinimumWidth = 6;
+            this.ColBalance.Name = "ColBalance";
+            this.ColBalance.ReadOnly = true;
+            this.ColBalance.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColBalance.Width = 66;
+            // 
+            // FrmDetailedReport
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.ClientSize = new System.Drawing.Size(982, 501);
@@ -410,7 +399,7 @@
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(998, 540);
-            this.Name = "FrmReport";
+            this.Name = "FrmDetailedReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Relatório";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -450,8 +439,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColDateEntry;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColDateExit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColQuantityExit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColTotalExit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColBalance;
     }
 }

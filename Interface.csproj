@@ -140,11 +140,17 @@
     <Compile Include="Views\Product\FrmProducts.Designer.cs">
       <DependentUpon>FrmProducts.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Report\FrmReport.cs">
+    <Compile Include="Views\Report\FrmDetailedReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Report\FrmReport.Designer.cs">
-      <DependentUpon>FrmReport.cs</DependentUpon>
+    <Compile Include="Views\Report\FrmDetailedReport.Designer.cs">
+      <DependentUpon>FrmDetailedReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Report\FrmReportCompleted.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Report\FrmReportCompleted.Designer.cs">
+      <DependentUpon>FrmReportCompleted.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Report\FrmReportPrint.cs">
       <SubType>Form</SubType>
@@ -183,17 +189,23 @@
     <EmbeddedResource Include="Views\Product\FrmProducts.resx">
       <DependentUpon>FrmProducts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Report\FrmReport.resx">
-      <DependentUpon>FrmReport.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Report\FrmDetailedReport.resx">
+      <DependentUpon>FrmDetailedReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Report\FrmReportCompleted.resx">
+      <DependentUpon>FrmReportCompleted.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Report\FrmReportPrint.resx">
       <DependentUpon>FrmReportPrint.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Report\Relatório do Almoxarifado Detalhado.rdlc" />
     <EmbeddedResource Include="Views\Report\Relatório do Almoxarifado.rdlc" />
     <EmbeddedResource Include="Views\Storage\FrmStorage.resx">
       <DependentUpon>FrmStorage.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="DataBase.Report.datasource" />
+    <None Include="DataBase.DetailedReport.datasource" />
+    <None Include="DataBase.ReportCompleted.datasource" />
+    <None Include="DataBase.ReportDetailed.datasource" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

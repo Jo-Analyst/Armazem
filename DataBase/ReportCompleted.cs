@@ -4,7 +4,7 @@ using System.Data;
 
 namespace DataBase
 {
-    public class Report
+    public class ReportCompleted
     {
 
         public string name { get; set; }

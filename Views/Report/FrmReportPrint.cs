@@ -7,10 +7,10 @@ namespace Interface.Views.Report
 {
     public partial class FrmReportPrint : Form
     {
-        public FrmReportPrint(DataTable report)
+        public FrmReportPrint(DataTable report, bool isDetailed = false)
         {
             InitializeComponent();
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Interface.Views.Report.Relatório do Almoxarifado.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = isDetailed ? "Interface.Views.Report.Relatório do Almoxarifado Detalhado.rdlc" : "Interface.Views.Report.Relatório do Almoxarifado.rdlc";
             this.reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DsReport", report));
         }
 
