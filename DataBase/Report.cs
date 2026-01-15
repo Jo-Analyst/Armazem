@@ -6,6 +6,15 @@ namespace DataBase
 {
     public class Report
     {
+
+        public string name { get; set; }
+        public string date_storage { get; set; }
+        public int stock { get; set; }
+        public int quantity_exit { get; set; }
+        public string description { get; set; }
+        public string date_exit { get; set; }
+
+
         public static DataTable GetReport(string name, string dateEntry, int page = 0, int quantRows = 10)
         {
             using (MySqlConnection conn = new MySqlConnection(ConnString.connectionChain))

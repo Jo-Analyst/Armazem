@@ -60,9 +60,7 @@
 
         }
 
-        #endregion
-        private DsReport dsReport;
-        private DsReportTableAdapters.DtReportTableAdapter dtReportTableAdapter;
+        #endregion      
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

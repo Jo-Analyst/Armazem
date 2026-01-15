@@ -140,11 +140,6 @@
     <Compile Include="Views\Product\FrmProducts.Designer.cs">
       <DependentUpon>FrmProducts.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Report\DsReport.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DsReport.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Views\Report\FrmReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +193,7 @@
     <EmbeddedResource Include="Views\Storage\FrmStorage.resx">
       <DependentUpon>FrmStorage.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DataBase.Report.datasource" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -208,17 +204,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Views\Report\DsReport.xsc">
-      <DependentUpon>DsReport.xsd</DependentUpon>
-    </None>
-    <None Include="Views\Report\DsReport.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DsReport.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Views\Report\DsReport.xss">
-      <DependentUpon>DsReport.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

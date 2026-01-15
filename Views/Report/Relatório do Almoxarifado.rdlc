@@ -730,38 +730,35 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="name">
-          <DataField>name</DataField>
+        <Field Name="date_exit">
+          <DataField>date_exit</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="date_storage">
           <DataField>date_storage</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="stock">
-          <DataField>stock</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
-        </Field>
-        <Field Name="quantity_exit">
-          <DataField>quantity_exit</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="description">
           <DataField>description</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="date_exit">
-          <DataField>date_exit</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+        <Field Name="name">
+          <DataField>name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="quantity_exit">
+          <DataField>quantity_exit</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="stock">
+          <DataField>stock</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>DsReport</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\Armazem\Views\Report\DsReport.xsd</rd:SchemaPath>
-        <rd:TableName>DtReport</rd:TableName>
-        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
-        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>DtReportTableAdapter</rd:TableAdapterName>
+        <rd:DataSetName>DataBase</rd:DataSetName>
+        <rd:TableName>Report</rd:TableName>
+        <rd:ObjectDataSourceType>DataBase.Report, DataBase, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
