@@ -28,63 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReportPrint));
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.dsReport = new Interface.Views.Report.dsReport();
-            this.dtReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dtReportTableAdapter = new Interface.Views.Report.dsReportTableAdapters.dtReportTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.dsReport)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtReportBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "dtReport";
-            reportDataSource1.Value = this.dtReportBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Interface.Views.Report.Relatório do Almoxarifado.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(800, 450);
+            this.reportViewer1.Size = new System.Drawing.Size(900, 563);
             this.reportViewer1.TabIndex = 0;
-            // 
-            // dsReport
-            // 
-            this.dsReport.DataSetName = "dsReport";
-            this.dsReport.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dtReportBindingSource
-            // 
-            this.dtReportBindingSource.DataMember = "dtReport";
-            this.dtReportBindingSource.DataSource = this.dsReport;
-            // 
-            // dtReportTableAdapter
-            // 
-            this.dtReportTableAdapter.ClearBeforeFill = true;
             // 
             // FrmReportPrint
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(900, 563);
             this.Controls.Add(this.reportViewer1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimizeBox = false;
             this.Name = "FrmReportPrint";
-            this.Text = "FrmReportPrint";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Relatório";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmReportPrint_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dsReport)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtReportBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
+        private DsReport dsReport;
+        private DsReportTableAdapters.DtReportTableAdapter dtReportTableAdapter;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private dsReport dsReport;
-        private System.Windows.Forms.BindingSource dtReportBindingSource;
-        private dsReportTableAdapters.dtReportTableAdapter dtReportTableAdapter;
     }
 }

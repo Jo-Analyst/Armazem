@@ -32,8 +32,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReport));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProducts));
             this.dgvProduct = new System.Windows.Forms.DataGridView();
+            this.ColADD = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.cbRows = new System.Windows.Forms.ComboBox();
@@ -47,11 +52,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnNewUser = new System.Windows.Forms.Button();
-            this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDelete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColEdit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColADD = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -62,8 +62,8 @@
             this.dgvProduct.AllowUserToDeleteRows = false;
             this.dgvProduct.AllowUserToResizeColumns = false;
             this.dgvProduct.AllowUserToResizeRows = false;
-            this.dgvProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dgvProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProduct.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.dgvProduct.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -112,6 +112,44 @@
             this.dgvProduct.TabStop = false;
             this.dgvProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellClick);
             this.dgvProduct.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellMouseEnter);
+            // 
+            // ColADD
+            // 
+            this.ColADD.HeaderText = "Adicionar ";
+            this.ColADD.Name = "ColADD";
+            this.ColADD.ReadOnly = true;
+            this.ColADD.ToolTipText = "Adicionar produto ao estoque";
+            // 
+            // ColEdit
+            // 
+            this.ColEdit.HeaderText = "Editar";
+            this.ColEdit.Name = "ColEdit";
+            this.ColEdit.ReadOnly = true;
+            // 
+            // ColDelete
+            // 
+            this.ColDelete.HeaderText = "Excluir";
+            this.ColDelete.Name = "ColDelete";
+            this.ColDelete.ReadOnly = true;
+            // 
+            // ColId
+            // 
+            this.ColId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColId.HeaderText = "Id";
+            this.ColId.MinimumWidth = 6;
+            this.ColId.Name = "ColId";
+            this.ColId.ReadOnly = true;
+            this.ColId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColId.Visible = false;
+            this.ColId.Width = 26;
+            // 
+            // ColName
+            // 
+            this.ColName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColName.HeaderText = "Nome";
+            this.ColName.MinimumWidth = 6;
+            this.ColName.Name = "ColName";
+            this.ColName.ReadOnly = true;
             // 
             // panel1
             // 
@@ -248,7 +286,7 @@
             // 
             // txtName
             // 
-            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtName.Location = new System.Drawing.Point(31, 124);
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -281,47 +319,9 @@
             this.btnNewUser.TabIndex = 0;
             this.btnNewUser.TabStop = false;
             this.btnNewUser.Text = "Novo";
-            this.toolTip.SetToolTip(this.btnNewUser, "Cadastrar novo usuário - {CTRL + N]");
+            this.toolTip.SetToolTip(this.btnNewUser, "Cadastrar novo produto - {CTRL + N]");
             this.btnNewUser.UseVisualStyleBackColor = true;
             this.btnNewUser.Click += new System.EventHandler(this.btnNewProduct_Click);
-            // 
-            // ColName
-            // 
-            this.ColName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColName.HeaderText = "Nome";
-            this.ColName.MinimumWidth = 6;
-            this.ColName.Name = "ColName";
-            this.ColName.ReadOnly = true;
-            // 
-            // ColId
-            // 
-            this.ColId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColId.HeaderText = "Id";
-            this.ColId.MinimumWidth = 6;
-            this.ColId.Name = "ColId";
-            this.ColId.ReadOnly = true;
-            this.ColId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColId.Visible = false;
-            this.ColId.Width = 26;
-            // 
-            // ColDelete
-            // 
-            this.ColDelete.HeaderText = "Excluir";
-            this.ColDelete.Name = "ColDelete";
-            this.ColDelete.ReadOnly = true;
-            // 
-            // ColEdit
-            // 
-            this.ColEdit.HeaderText = "Editar";
-            this.ColEdit.Name = "ColEdit";
-            this.ColEdit.ReadOnly = true;
-            // 
-            // ColADD
-            // 
-            this.ColADD.HeaderText = "Adicionar ";
-            this.ColADD.Name = "ColADD";
-            this.ColADD.ReadOnly = true;
-            this.ColADD.ToolTipText = "Adicionar produto ao estoque";
             // 
             // FrmProducts
             // 

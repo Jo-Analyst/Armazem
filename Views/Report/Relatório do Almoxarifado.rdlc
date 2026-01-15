@@ -2,7 +2,7 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
-      <Tablix Name="Tablix1">
+      <Tablix Name="Tablix3">
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
@@ -30,7 +30,7 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox2">
+                    <Textbox Name="Textbox12">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -49,7 +49,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox2</rd:DefaultName>
+                      <rd:DefaultName>Textbox12</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -74,7 +74,6 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>White</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -85,7 +84,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox3">
+                    <Textbox Name="Textbox15">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -104,7 +103,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox3</rd:DefaultName>
+                      <rd:DefaultName>Textbox15</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -129,7 +128,6 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>White</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -140,14 +138,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox5">
+                    <Textbox Name="Textbox17">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Quant. </Value>
+                              <Value>Quant.</Value>
                               <Style>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -159,7 +157,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox5</rd:DefaultName>
+                      <rd:DefaultName>Textbox17</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -184,7 +182,6 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>White</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -195,7 +192,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox9">
+                    <Textbox Name="Textbox19">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -214,7 +211,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox9</rd:DefaultName>
+                      <rd:DefaultName>Textbox19</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -239,7 +236,6 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>White</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -250,7 +246,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox11">
+                    <Textbox Name="Textbox21">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -269,7 +265,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox11</rd:DefaultName>
+                      <rd:DefaultName>Textbox21</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -294,7 +290,6 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>White</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -305,7 +300,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox13">
+                    <Textbox Name="Textbox23">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -324,7 +319,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox13</rd:DefaultName>
+                      <rd:DefaultName>Textbox23</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -349,7 +344,6 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>White</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -365,7 +359,7 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="name">
+                    <Textbox Name="name1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -373,9 +367,7 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!name.Value</Value>
-                              <Style>
-                                <FontWeight>Normal</FontWeight>
-                              </Style>
+                              <Style />
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -383,7 +375,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>name</rd:DefaultName>
+                      <rd:DefaultName>name1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -408,7 +400,6 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>White</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -419,7 +410,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="date_storage">
+                    <Textbox Name="date_storage1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -427,9 +418,7 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!date_storage.Value</Value>
-                              <Style>
-                                <FontWeight>Normal</FontWeight>
-                              </Style>
+                              <Style />
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -437,7 +426,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>date_storage</rd:DefaultName>
+                      <rd:DefaultName>date_storage1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -462,7 +451,6 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>White</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -473,7 +461,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="stock">
+                    <Textbox Name="stock1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -481,9 +469,7 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!stock.Value</Value>
-                              <Style>
-                                <FontWeight>Normal</FontWeight>
-                              </Style>
+                              <Style />
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -491,7 +477,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>stock</rd:DefaultName>
+                      <rd:DefaultName>stock1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -516,7 +502,6 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>White</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -527,7 +512,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="date_exit">
+                    <Textbox Name="date_exit1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -535,9 +520,7 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!date_exit.Value</Value>
-                              <Style>
-                                <FontWeight>Normal</FontWeight>
-                              </Style>
+                              <Style />
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -545,7 +528,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>date_exit</rd:DefaultName>
+                      <rd:DefaultName>date_exit1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -570,7 +553,6 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>White</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -581,7 +563,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="description">
+                    <Textbox Name="description1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -589,9 +571,7 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!description.Value</Value>
-                              <Style>
-                                <FontWeight>Normal</FontWeight>
-                              </Style>
+                              <Style />
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -599,7 +579,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>description</rd:DefaultName>
+                      <rd:DefaultName>description1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -624,7 +604,6 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>White</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -635,7 +614,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="quantity_exit">
+                    <Textbox Name="quantity_exit1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -643,9 +622,7 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!quantity_exit.Value</Value>
-                              <Style>
-                                <FontWeight>Normal</FontWeight>
-                              </Style>
+                              <Style />
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -653,7 +630,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>quantity_exit</rd:DefaultName>
+                      <rd:DefaultName>quantity_exit1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -678,7 +655,6 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>White</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -707,15 +683,15 @@
               <KeepWithGroup>After</KeepWithGroup>
             </TablixMember>
             <TablixMember>
-              <Group Name="Detalhes" />
+              <Group Name="Detalhes1" />
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>dtReport</DataSetName>
-        <Top>1.4605cm</Top>
+        <DataSetName>DsReport</DataSetName>
+        <Top>0.42016cm</Top>
         <Left>0.889cm</Left>
         <Height>1.2cm</Height>
-        <Width>23.34433cm</Width>
+        <Width>23.34431cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -723,10 +699,10 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2in</Height>
+    <Height>2.21077in</Height>
     <Style />
   </Body>
-  <Width>9.54068in</Width>
+  <Width>9.65817in</Width>
   <Page>
     <PageHeight>21cm</PageHeight>
     <PageWidth>29.7cm</PageWidth>
@@ -739,32 +715,24 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="dsReport">
+    <DataSource Name="DsReport">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>2a31cf94-2cd0-495d-b445-7d72dd59ab9d</rd:DataSourceID>
+      <rd:DataSourceID>dcda8b8a-14a2-47dc-b0a8-8224deab66ee</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="dtReport">
+    <DataSet Name="DsReport">
       <Query>
-        <DataSourceName>dsReport</DataSourceName>
+        <DataSourceName>DsReport</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="id">
-          <DataField>id</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
         <Field Name="name">
           <DataField>name</DataField>
           <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="id1">
-          <DataField>id1</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="date_storage">
           <DataField>date_storage</DataField>
@@ -774,38 +742,26 @@
           <DataField>stock</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
-        <Field Name="product_id">
-          <DataField>product_id</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="id2">
-          <DataField>id2</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="date_exit">
-          <DataField>date_exit</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+        <Field Name="quantity_exit">
+          <DataField>quantity_exit</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="description">
           <DataField>description</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="quantity_exit">
-          <DataField>quantity_exit</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
-        </Field>
-        <Field Name="storage_id">
-          <DataField>storage_id</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+        <Field Name="date_exit">
+          <DataField>date_exit</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>dsReport</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\Armazem\Views\Report\dsReport.xsd</rd:SchemaPath>
-        <rd:TableName>dtReport</rd:TableName>
+        <rd:DataSetName>DsReport</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\jojoc\OneDrive\Documentos\Projetos\Meus projetos\Armazem\Views\Report\DsReport.xsd</rd:SchemaPath>
+        <rd:TableName>DtReport</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>dtReportTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>DtReportTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

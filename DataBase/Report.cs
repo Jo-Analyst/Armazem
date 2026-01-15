@@ -66,6 +66,66 @@ namespace DataBase
             }
         }
 
+        public static DataTable GetReportCompleted(string name, string dateEntry)
+        {
+            using (MySqlConnection conn = new MySqlConnection(ConnString.connectionChain))
+            {
+                conn.Open();
+                string sql = "";
+                if (string.IsNullOrWhiteSpace(name) && string.IsNullOrEmpty(dateEntry))
+                    sql = "SELECT" + $@"
+                                products.name,
+                                DATE_FORMAT(storages.date_storage, '%d/%m/%Y') AS date_storage, 
+                                storages.stock, 
+                                departures.quantity_exit,
+                                departures.description,
+                                DATE_FORMAT(departures.date_exit, '%d/%m/%Y') date_exit
+                    FROM products
+                    inner JOIN storages ON storages.product_id = products.id
+                    left JOIN departures ON departures.storage_id = storages.id; ";
+                else if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrEmpty(dateEntry))
+                    sql = "SELECT" + $@"
+                                products.name, 
+                                DATE_FORMAT(storages.date_storage, '%d/%m/%Y') AS date_storage, 
+                                storages.stock, 
+                                departures.quantity_exit,
+                                departures.description,
+                                DATE_FORMAT(departures.date_exit, '%d/%m/%Y') date_exit
+                    FROM products
+                    inner JOIN storages ON storages.product_id = products.id
+                    left JOIN departures ON departures.storage_id = storages.id WHERE products.name LIKE '%{name}%' AND storages.date_storage = '{dateEntry}'; ";
+                else if (!string.IsNullOrWhiteSpace(name))
+                    sql = "SELECT" + $@"
+                                products.name, 
+                                DATE_FORMAT(storages.date_storage, '%d/%m/%Y') AS date_storage, 
+                                storages.stock, 
+                                departures.quantity_exit,
+                                departures.description,
+                                DATE_FORMAT(departures.date_exit, '%d/%m/%Y') date_exit
+                    FROM products
+                    inner JOIN storages ON storages.product_id = products.id
+                    left JOIN departures ON departures.storage_id = storages.id WHERE products.name LIKE '%{name}%';";
+                else if (!string.IsNullOrEmpty(dateEntry))
+                    sql = "SELECT" + $@"
+                                products.name, 
+                                DATE_FORMAT(storages.date_storage, '%d/%m/%Y') AS date_storage, 
+                                storages.stock, 
+                                departures.quantity_exit,
+                                departures.description,
+                                DATE_FORMAT(departures.date_exit, '%d/%m/%Y') date_exit
+                    FROM products
+                    inner JOIN storages ON storages.product_id = products.id
+                    left JOIN departures ON departures.storage_id = storages.id WHERE storages.date_storage = '{dateEntry}'; ";
+
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                return dataTable;
+            }
+        }
+
         public static int CountQuantityRows(string name, string dateEntry)
         {
             using (MySqlConnection conn = new MySqlConnection(ConnString.connectionChain))

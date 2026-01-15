@@ -319,7 +319,7 @@
             this.dtDateEntry.Location = new System.Drawing.Point(577, 129);
             this.dtDateEntry.Name = "dtDateEntry";
             this.dtDateEntry.Size = new System.Drawing.Size(151, 26);
-            this.dtDateEntry.TabIndex = 9;          
+            this.dtDateEntry.TabIndex = 9;
             // 
             // groupBox1
             // 
@@ -377,6 +377,7 @@
             // btnPrint
             // 
             this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrint.Enabled = false;
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -385,6 +386,7 @@
             this.btnPrint.Size = new System.Drawing.Size(215, 66);
             this.btnPrint.TabIndex = 11;
             this.btnPrint.Text = "Visualizar";
+            this.toolTip.SetToolTip(this.btnPrint, "Visualizar relatório - [CTRL + ALT  + P]");
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 

@@ -140,10 +140,10 @@
     <Compile Include="Views\Product\FrmProducts.Designer.cs">
       <DependentUpon>FrmProducts.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Report\dsReport.Designer.cs">
+    <Compile Include="Views\Report\DsReport.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dsReport.xsd</DependentUpon>
+      <DependentUpon>DsReport.xsd</DependentUpon>
     </Compile>
     <Compile Include="Views\Report\FrmReport.cs">
       <SubType>Form</SubType>
@@ -208,16 +208,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Views\Report\dsReport.xsc">
-      <DependentUpon>dsReport.xsd</DependentUpon>
+    <None Include="Views\Report\DsReport.xsc">
+      <DependentUpon>DsReport.xsd</DependentUpon>
     </None>
-    <None Include="Views\Report\dsReport.xsd">
+    <None Include="Views\Report\DsReport.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsReport.Designer.cs</LastGenOutput>
+      <LastGenOutput>DsReport.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Views\Report\dsReport.xss">
-      <DependentUpon>dsReport.xsd</DependentUpon>
+    <None Include="Views\Report\DsReport.xss">
+      <DependentUpon>DsReport.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -37,7 +37,7 @@ namespace Interface
             {
                 EnabledBtnArrowLeft();
             }
-            
+
             LoadReport();
         }
 
@@ -106,7 +106,7 @@ namespace Interface
         {
             PageData.quantityRowsSelected = numberRows;
             pageMaximum = PageData.SetPageQuantityRowsReport(name, dateEntry);
-           
+
             if (pageMaximum > 1)
                 EnabledBtnArrowRight();
 
@@ -119,7 +119,7 @@ namespace Interface
                 dgvReport.Rows.Clear();
 
                 int quantRows = int.Parse(cbRows.Text);
-                int pageSelected = (page - 1) * quantRows;              
+                int pageSelected = (page - 1) * quantRows;
 
                 DataTable dtReport = Report.GetReport(name, dateEntry, pageSelected, quantRows);
 
@@ -129,12 +129,14 @@ namespace Interface
                     dgvReport.Rows[index].Cells["ColName"].Value = storage["name"].ToString();
                     dgvReport.Rows[index].Cells["ColDateEntry"].Value = storage["date_storage"].ToString();
                     dgvReport.Rows[index].Cells["ColStock"].Value = storage["stock"].ToString();
-                    dgvReport.Rows[index].Cells["ColQuantityExit"].Value = storage["quantity_exit"].ToString() != ""  ? storage["quantity_exit"].ToString() : "---";
+                    dgvReport.Rows[index].Cells["ColQuantityExit"].Value = storage["quantity_exit"].ToString() != "" ? storage["quantity_exit"].ToString() : "---";
                     dgvReport.Rows[index].Cells["ColDescription"].Value = storage["description"].ToString() != string.Empty ? storage["description"].ToString() : "---";
                     dgvReport.Rows[index].Cells["ColDateExit"].Value = storage["date_exit"].ToString() != string.Empty ? storage["date_exit"].ToString() : "---";
                     dgvReport.Rows[index].Height = 45;
                     dgvReport.Rows[index].Selected = false;
-                }              
+                }
+
+                btnPrint.Enabled = dgvReport.Rows.Count > 0;
             }
             catch (Exception)
             {
@@ -157,6 +159,7 @@ namespace Interface
         {
             if (e.Control && e.KeyCode == Keys.Right && btnArrowRight.Enabled) btnArrowRight_Click(sender, e);
             else if (e.Control && e.KeyCode == Keys.Left && btnArrowLeft.Enabled) btnArrowLeft_Click(sender, e);
+            else if(e.Control && e.Alt && e.KeyCode == Keys.P && btnPrint.Enabled) btnPrint_Click(sender, e);
         }
 
         private void LoadEvents()
@@ -209,7 +212,7 @@ namespace Interface
             txtName.Enabled = cbName.Checked == true;
             txtName.Focus();
             LoadEvents();
-         
+
             if (!cbName.Checked)
             {
                 txtName.Clear();
@@ -237,7 +240,7 @@ namespace Interface
         private void txtName_TextChanged(object sender, EventArgs e)
         {
             LoadEvents();
-            
+
             if (pageMaximum == 1)
             {
                 DisabledBtnArrowLeft();
@@ -257,7 +260,30 @@ namespace Interface
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            new FrmReportPrint().ShowDialog();
-        }       
+            DataTable report = Report.GetReportCompleted(name, dateEntry);
+            DataTable reportClone = new DataTable();
+            reportClone.Columns.Add("name", typeof(string));
+            reportClone.Columns.Add("date_storage", typeof(string));
+            reportClone.Columns.Add("stock", typeof(string));
+            reportClone.Columns.Add("quantity_exit", typeof(string));
+                reportClone.Columns.Add("description", typeof(string));
+            reportClone.Columns.Add("date_exit", typeof(string));
+
+            int index = 0;
+            foreach (DataRow row in report.Rows)
+            {
+                reportClone.Rows.Add();
+               reportClone.Rows[index]["name"] = row["name"].ToString();
+                reportClone.Rows[index]["date_storage"] = row["date_storage"].ToString();
+                reportClone.Rows[index]["stock"] = row["stock"].ToString();
+                reportClone.Rows[index]["description"] = !string.IsNullOrWhiteSpace(row["description"].ToString()) ? row["description"].ToString() : "---";
+                reportClone.Rows[index]["date_exit"] = !string.IsNullOrWhiteSpace(row["date_exit"].ToString()) ? row["date_exit"].ToString() : "---";
+                reportClone.Rows[index]["quantity_exit"] = !string.IsNullOrWhiteSpace(row["quantity_exit"].ToString()) ? row["quantity_exit"].ToString() : "---";
+               index++;
+            }
+
+            new FrmReportPrint(reportClone).ShowDialog();
+        }
+
     }
 }
