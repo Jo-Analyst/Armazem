@@ -31,7 +31,12 @@ namespace Interface
 
         private void btnBackupAndRestore_Click(object sender, System.EventArgs e)
         {
+            new FrmBackupAndRestore().ShowDialog();
+        }
 
+        private void btnSetting_Click(object sender, System.EventArgs e)
+        {
+            new FrmSetting().ShowDialog();
         }
     }
 }

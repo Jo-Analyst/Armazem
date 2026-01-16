@@ -112,6 +112,12 @@
     <Compile Include="Views\Departure\FrmDeparture.Designer.cs">
       <DependentUpon>FrmDeparture.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Backup\FrmBackupAndRestore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Backup\FrmBackupAndRestore.designer.cs">
+      <DependentUpon>FrmBackupAndRestore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmControlArmazen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,12 @@
     <Compile Include="Views\Report\FrmReportPrint.Designer.cs">
       <DependentUpon>FrmReportPrint.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Setting\FrmSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Setting\FrmSetting.Designer.cs">
+      <DependentUpon>FrmSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Storage\FrmStorage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +178,9 @@
     </Compile>
     <EmbeddedResource Include="Views\Departure\FrmDeparture.resx">
       <DependentUpon>FrmDeparture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Backup\FrmBackupAndRestore.resx">
+      <DependentUpon>FrmBackupAndRestore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmControlArmazen.resx">
       <DependentUpon>FrmControlArmazen.cs</DependentUpon>
@@ -200,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Report\Relatório do Almoxarifado Detalhado.rdlc" />
     <EmbeddedResource Include="Views\Report\Relatório do Almoxarifado.rdlc" />
+    <EmbeddedResource Include="Views\Setting\FrmSetting.resx">
+      <DependentUpon>FrmSetting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Storage\FrmStorage.resx">
       <DependentUpon>FrmStorage.cs</DependentUpon>
     </EmbeddedResource>

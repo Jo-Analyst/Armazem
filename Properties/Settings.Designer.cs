@@ -22,5 +22,17 @@ namespace Interface.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Almoxarifado\\Backup")]
+        public string path_Backup {
+            get {
+                return ((string)(this["path_Backup"]));
+            }
+            set {
+                this["path_Backup"] = value;
+            }
+        }
     }
 }
