@@ -1,4 +1,4 @@
-﻿//using DataBase;
+﻿using DataBase;
 using System;
 using System.Windows.Forms;
 
@@ -23,11 +23,8 @@ namespace Interface
                 this.Visible = false;
                 try
                 {
-                    //if (!DB.ExistsDataBase())
-                    //{
-                    //    DB.CreateDatabase();
-                    //    DB.CreateTables();
-                    //}
+                    DB.CreateDatabase();
+                    DB.CreateTables();
 
                     new FrmControlArmazen().ShowDialog();
                 }

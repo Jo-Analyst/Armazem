@@ -120,6 +120,7 @@
     <Compile Include="ReportDetailed.cs" />
     <Compile Include="Storage.cs" />
     <Compile Include="utils\ConnString.cs" />
+    <Compile Include="DB.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
