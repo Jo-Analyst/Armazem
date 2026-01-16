@@ -38,7 +38,12 @@
             this.btnConfirm = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtServer = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -48,7 +53,7 @@
             this.label1.Location = new System.Drawing.Point(17, 33);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 20);
+            this.label1.Size = new System.Drawing.Size(84, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Diretório";
             // 
@@ -74,7 +79,7 @@
             this.label2.Location = new System.Drawing.Point(18, 96);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(338, 17);
+            this.label2.Size = new System.Drawing.Size(405, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Escolha um diretório direto do disco. EX: C:\\Example";
             // 
@@ -98,14 +103,14 @@
             // 
             this.txtDirectoryBackup.Location = new System.Drawing.Point(21, 57);
             this.txtDirectoryBackup.Name = "txtDirectoryBackup";
-            this.txtDirectoryBackup.Size = new System.Drawing.Size(441, 26);
+            this.txtDirectoryBackup.Size = new System.Drawing.Size(441, 30);
             this.txtDirectoryBackup.TabIndex = 1;
             // 
             // btnConfirm
             // 
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirm.ForeColor = System.Drawing.Color.White;
-            this.btnConfirm.Location = new System.Drawing.Point(442, 154);
+            this.btnConfirm.Location = new System.Drawing.Point(442, 300);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(154, 46);
             this.btnConfirm.TabIndex = 0;
@@ -114,12 +119,56 @@
             this.btnConfirm.UseVisualStyleBackColor = true;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.txtServer);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
+            this.groupBox2.Location = new System.Drawing.Point(12, 139);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(584, 130);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "informe o Servidor";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(18, 96);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(428, 20);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Escolha o servidor conectado. EX: localhost; 10.152.145";
+            // 
+            // txtServer
+            // 
+            this.txtServer.Location = new System.Drawing.Point(21, 57);
+            this.txtServer.Name = "txtServer";
+            this.txtServer.Size = new System.Drawing.Size(506, 30);
+            this.txtServer.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(16, 29);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 25);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Servidor";
+            // 
             // FrmSetting
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.ClientSize = new System.Drawing.Size(617, 222);
+            this.ClientSize = new System.Drawing.Size(617, 358);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -136,6 +185,8 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmSetting_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -150,5 +201,9 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtServer;
+        private System.Windows.Forms.Label label4;
     }
 }

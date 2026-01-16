@@ -11,12 +11,15 @@ namespace Interface
             InitializeComponent();
 
             txtDirectoryBackup.Text = Settings.Default["path_Backup"].ToString();
+            txtServer.Text = (string)DataBase.Properties.Settings.Default["server"];
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {          
             Settings.Default["path_Backup"] = txtDirectoryBackup.Text;
+            DataBase.Properties.Settings.Default["server"] = txtServer.Text;
            
+            DataBase.Properties.Settings.Default.Save();
             Settings.Default.Save();
             this.Close();
         }
