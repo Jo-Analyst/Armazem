@@ -1,34 +1,31 @@
 ﻿using MySql.Data.MySqlClient;
+using System;
 
 namespace DataBase
 {
     public class DB
     {
-        static public bool ExistsDataBase()
+        static public bool IsConnect()
         {
-            bool existsDataBase = false;
+            bool isConnect = false;
 
-            using (MySqlConnection connection = new MySqlConnection(ConnString.connectionChain))
+            try
             {
-                MySqlCommand comando = new MySqlCommand("SELECT * FROM Sys.Databases WHERE name = 'dbCentralServices'", connection);
-                try
+                using (MySqlConnection conn = new MySqlConnection(ConnString.connectionChainNoDatabase))
                 {
-                    connection.Open();
-                    comando.ExecuteNonQuery();
-                    MySqlDataReader dr = comando.ExecuteReader();
-                    if (dr.Read())
-                    {
-                        existsDataBase = true;
-                    }
+                    conn.Open(); // tenta abrir a conexão
 
-                }
-                catch
-                {
-                    throw;
+                    MySqlCommand cmd = new MySqlCommand("SELECT NOW();", conn);
+                    object result = cmd.ExecuteScalar();
+                    isConnect = true;
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao conectar: " + ex.Message);
+            }
 
-            return existsDataBase;
+            return isConnect;
         }
 
         static public void CreateTables()

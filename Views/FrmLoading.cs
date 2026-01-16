@@ -23,6 +23,14 @@ namespace Interface
                 this.Visible = false;
                 try
                 {
+                    if(!DB.IsConnect())
+                    {
+                        MessageBox.Show("Não foi possível conectar ao servidor. Verifique as configurações.", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        new FrmSetting().ShowDialog();
+                        Application.Exit();
+                        return;
+                    }
+
                     DB.CreateDatabase();
                     DB.CreateTables();
 
@@ -30,7 +38,6 @@ namespace Interface
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
                     MessageBox.Show("Houve um problema no servidor. Tente novamente. Caso o erro persista contate o suporte.", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Application.Exit();
                 }
@@ -40,6 +47,11 @@ namespace Interface
         private void lkClose_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void FrmLoading_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

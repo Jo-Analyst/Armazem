@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBase", "DataBase\DataBase.csproj", "{A784E231-E0B7-49D1-B3FD-EB16A96A7E7B}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Warehouse-Control-Installer", "warehouse-control-installer\warehouse-control-installer.vdproj", "{D2322810-B0E2-8625-B9CA-6F88292F6945}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Warehouse-Control-Installer", "Warehouse-Control-Installer\Warehouse-Control-Installer.vdproj", "{D2322810-B0E2-8625-B9CA-6F88292F6945}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
